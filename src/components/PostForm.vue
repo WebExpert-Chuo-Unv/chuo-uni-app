@@ -5,14 +5,19 @@
       <div id="namae">ユーザーネーム</div>
       <input type="text" placeholder="匿名希望" v-model="name" />
       <div>
-        <select v-model="time">
-          <option disabled value="sentaku">
-            朝ごはん？昼ごはん？夜ごはん？"
-          </option>
-          <option>朝ごはん</option>
-          <option>昼ごはん</option>
-          <option>夜ごはん</option>
-        </select>
+        <div id="CookingName">料理名</div>
+        <input type="text" placeholder="ハヤシライス" v-model="CookingName" />
+        <div>
+          <div>朝ごはん？昼ごはん？夜ごはん？</div>
+          <select v-model="time">
+            <option disabled value="sentaku">
+              朝ごはん？昼ごはん？夜ごはん？"
+            </option>
+            <option>朝ごはん</option>
+            <option>昼ごはん</option>
+            <option>夜ごはん</option>
+          </select>
+        </div>
       </div>
       <div id="komento">コメント</div>
       <textarea v-model="comments" placeholder="なんでもどうぞ！"></textarea>
@@ -29,16 +34,21 @@ export default {
       result: [],
       name: "",
       time: "",
+      CookingName: "",
       comments: "",
     };
   },
   methods: {
     AfterButton() {
-      firebase.firestore().collection("result").add({
-        ニックネーム: this.name,
-        いつ: this.time,
-        感想: this.comments,
-      });
+      firebase
+        .firestore()
+        .collection("result")
+        .add({
+          ニックネーム: this.name,
+          いつ: this.time,
+          料理名: this.CookingName,
+          感想: this.comments,
+        });
     },
   },
   created() {
