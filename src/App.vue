@@ -1,23 +1,18 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-    <div>
-      <Image />
-    </div>
+    <ImagePost />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue"
-import Image from "@/components/Image.vue"
-
+import ImagePost from "./components/ImagePost.vue"
+import firebase from "firebase";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
-    Image
+    ImagePost,
   },
 }
 </script>

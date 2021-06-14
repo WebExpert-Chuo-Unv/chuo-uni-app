@@ -1,5 +1,5 @@
 <template>
-  <div class="contents">
+  <div>
     <label v-show="!uploadedImage" class="input-item__label"
       >画像を選択
       <input type="file" @change="onFileChange" />
@@ -20,14 +20,14 @@
 
 <script>
 export default {
-  name: "Image",
+  name: "ImagePost",
   data() {
       return {
           uploadedImage: '',
           img_name:'',
       };
   },
-    methods: {
+  methods: {
     onFileChange(e) {
       const files = e.target.files || e.dataTransfer.files;
       this.createImage(files[0]);
@@ -44,16 +44,17 @@ export default {
       this.uploadedImage = false;
     },
   },
+  mounted: function(){
+    console.log("image")
+  }
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: red;
-  margin-top: 60px;
-}
+  .preview-item-file{
+    width: 30%;
+    image-rendering: auto;
+    display: flex;
+    border-radius: 10em;
+  }
 </style>
