@@ -2,8 +2,11 @@
   <div class="header">
     <h1>みんなの作ったご飯を共有しよう！</h1>
     <div class="app">
-      <div id="namae">ユーザーネーム</div>
-      <input type="text" placeholder="匿名希望" v-model="name" />
+      <div id="namae">
+        ユーザーネーム（匿名可）
+        <div class="privacy">※個人情報の取り扱いに注意してください！※</div>
+      </div>
+      <input type="text" placeholder="山田太郎" v-model="name" />
       <div>
         <div id="CookingName">料理名</div>
         <input type="text" placeholder="ハヤシライス" v-model="CookingName" />
@@ -91,5 +94,9 @@ textarea {
   resize: none;
   width: 300px;
   height: 100px;
+}
+.privacy {
+  font-weight: 400;
+  color: red;
 }
 </style>
