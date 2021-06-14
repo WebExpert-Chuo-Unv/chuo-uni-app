@@ -1,21 +1,14 @@
 <template>
   <div>
-    <div>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/my-page">MyPage</router-link>
-    </div>
-    <div><PostForm /></div>
+    <div><LogIn /></div>
   </div>
 </template>
 
 <script>
-import PostForm from "@/components/PostForm.vue";
+import LogIn from "@/components/LogIn.vue";
 export default {
   components: {
-    PostForm,
+    LogIn,
   },
 };
 </script>
-
-<style></style>
