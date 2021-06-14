@@ -246,12 +246,12 @@ export default {
           } else if (day === 0) {
             let width = this.getEventWidth(date, endDate, day)
             dayEvents.push({ ...event, width })
-          } else {
           }
         }
       })
       return dayEvents
     },
+
     getEventWidth(end, start, day) {
       let betweenDays = moment(end).diff(moment(start), "days")
       if (betweenDays > 6 - day) {
