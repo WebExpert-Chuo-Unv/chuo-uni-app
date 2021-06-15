@@ -1,17 +1,33 @@
 <template>
-  <div class="header">
+  <div class="app">
     <h1>みんなの作ったご飯を共有しよう！</h1>
-    <div class="app">
-      <div id="namae">
-        ユーザーネーム（匿名可）
-        <div class="privacy">※個人情報の取り扱いに注意してください！※</div>
-      </div>
-      <input type="text" placeholder="山田太郎" v-model="name" />
-      <div>
-        <div id="CookingName">料理名</div>
-        <input type="text" placeholder="ハヤシライス" v-model="CookingName" />
-        <div>
-          <div>朝ごはん？昼ごはん？夜ごはん？</div>
+    <div class="content">
+
+          <h3>ユーザーネーム（匿名可）</h3>
+          <input type="text" placeholder="山田太郎" v-model="name" />
+          <p class="privacy">※個人情報の取り扱いに注意してください！※</p> 
+        
+          <h3>料理名</h3>
+            <input type="text" placeholder="ハヤシライス" v-model="CookingName" />
+            <p>
+              <label v-show="!uploadedImage" class="input-item__label"
+                >画像を選択
+                <input type="file" @change="onFileChange" />
+              </label>
+              <div class="preview-item">
+                <img
+                  v-show="uploadedImage"
+                  class="preview-item-file"
+                  :src="uploadedImage"
+                  alt=""
+                />
+                  <div v-show="uploadedImage" class="preview-item-btn" @click="remove">
+                    <p class="preview-item-name">{{ img_name }}</p>
+                  </div>
+              </div>
+
+        <div class="option">
+          <h3><p>朝ごはん？昼ごはん？夜ごはん？</p></h3>
           <select v-model="time">
             <option disabled value="sentaku">
               朝ごはん？昼ごはん？夜ごはん？"
@@ -21,10 +37,14 @@
             <option>夜ごはん</option>
           </select>
         </div>
-      </div>
-      <div id="komento">コメント</div>
-      <textarea v-model="comments" placeholder="なんでもどうぞ！"></textarea>
-      <div><button v-on:click="AfterButton">送信</button></div>
+
+        <div class="comment">
+          <h3><p>コメント</p></h3>
+          <textarea v-model="comments" placeholder="なんでもどうぞ！" class="comment-field"></textarea>
+        </div>
+        <div class="submit">
+          <button v-on:click="AfterButton">送信</button>
+        </div>
     </div>
   </div>
 </template>
@@ -39,6 +59,8 @@ export default {
       time: "",
       CookingName: "",
       comments: "",
+      uploadedImage: '',
+      img_name:'',
     };
   },
   methods: {
@@ -53,6 +75,24 @@ export default {
           感想: this.comments,
         });
     },
+    onFileChange(e) {
+      const files = e.target.files || e.dataTransfer.files;
+      this.createImage(files[0]);
+      this.img_name = files[0].name;
+    },
+    createImage(file) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        this.uploadedImage = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    },
+    remove() {
+      this.uploadedImage = false;
+    },
+  },
+  mounted: function(){
+    console.log("image")
   },
   created() {
     firebase
@@ -73,30 +113,30 @@ export default {
 <style>
 body {
   background-image: url("~@/assets/PostForm2.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% auto;
+  background-size: 100%;
+  backdrop-filter: blur(5px);
 }
-.header {
-  font-size: 40px;
-  height: 100px;
-  background-color: rgb(221, 142, 197);
+.app{
+  font-weight: bold;
+  margin: 10% auto;
+  text-align: center;
+  width: 70%;
+  height: 80vh;
 }
-.app {
-  font-size: 20px;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+.comment{
+  height: 20vh;
 }
-textarea {
-  resize: none;
-  width: 300px;
-  height: 100px;
+.comment-field{
+  width: 50%;
+  height: 65%;
 }
-.privacy {
-  font-weight: 400;
-  color: red;
+.submit{
+  text-align: right;
+  margin-right: 10%;
 }
+.preview-item-file{
+    width: 30%;
+    image-rendering: auto;
+    border-radius: 10px;
+  }
 </style>
