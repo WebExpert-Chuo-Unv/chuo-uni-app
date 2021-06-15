@@ -7,7 +7,6 @@
 
 <script>
 import ImagePost from "./components/ImagePost.vue"
-import firebase from "firebase";
 
 export default {
   name: "App",
