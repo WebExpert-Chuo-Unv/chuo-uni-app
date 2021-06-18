@@ -6,8 +6,9 @@
         <router-link to="/LogInPage">ログインページ</router-link>
       </div>
       <div class="sign-in">
-        <span @click="signIn">ログイン</span>
-        <span @click="signOut">ログアウト</span>
+        <button @click="signIn">ログイン</button>
+
+        <button @click="signOut">ログアウト</button>
       </div>
       <router-view />
       <router-link to="/Mypage">ログインしたらここをクリック！</router-link>
@@ -32,6 +33,11 @@ export default {
 </script>
 
 <style>
+body {
+  background-image: url("~@/assets/heya.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -52,20 +58,33 @@ export default {
 #nav a:hover {
   color: #2c3e502b;
 }
-.sign-in span {
+.sign-in button {
   font-weight: bold;
-  color: #2c3e50;
-  padding: 0 1rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
 }
-.sign-in span:hover {
-  color: #2c3e502b;
+.sign-in button:hover {
+  background-color: #2ee59d;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
 }
+
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
 .title {
-  color: chartreuse;
+  color: rgb(112, 12, 226);
   font-size: 2em;
+  font-weight: 100;
   margin: 2em 0;
   position: relative;
   padding: 0.5em 1.5em;
