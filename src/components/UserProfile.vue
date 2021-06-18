@@ -11,7 +11,7 @@
         />
       </div>
     </div>
-    <div v-else>No User Signed In</div>
+    <div v-else>ログインしてください。</div>
   </div>
 </template>
 

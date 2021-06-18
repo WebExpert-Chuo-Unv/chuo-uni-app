@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import BeforeSignIn from "@/views/BeforeSignIn.vue";
-import AfterSignIn from "@/views/AfterSignIn.vue";
+import LogInPage from "@/views/LogInPage.vue";
+import MyPage from "@/views/MyPage.vue";
 import firebase from "firebase";
 
 Vue.use(VueRouter);
@@ -9,17 +9,17 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    redirect: "/BeforeSignIn",
+    redirect: "/LogInPage",
   },
   {
-    path: "/BeforeSignIn",
-    name: "BeforeSignIn",
-    component: BeforeSignIn,
+    path: "/LogInPage/",
+    name: "LogInPage",
+    component: LogInPage,
   },
   {
-    path: "/AfterSignIn",
-    name: "AfterSignIn",
-    component: AfterSignIn,
+    path: "/MyPage",
+    name: "MyPage",
+    component: MyPage,
   },
 ];
 
@@ -36,8 +36,8 @@ let isSignedIn = () => {
 };
 
 router.beforeEach((to, from, next) => {
-  if (to.name !== "BeforeSignIn" && !isSignedIn()) {
-    next("/BeforeSignIn");
+  if (to.name !== "LogInPage" && !isSignedIn()) {
+    next("/LogInPage");
   } else {
     next();
   }

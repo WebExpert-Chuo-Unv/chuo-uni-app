@@ -3,16 +3,14 @@
     <div class="title">みんなでシェアご飯！</div>
     <div id="app">
       <div id="nav">
-        <router-link to="/BeforeSignIn">ログインページ</router-link>
+        <router-link to="/LogInPage">ログインページ</router-link>
       </div>
       <div class="sign-in">
         <span @click="signIn">ログイン</span>
         <span @click="signOut">ログアウト</span>
       </div>
       <router-view />
-      <router-link to="/AfterSignIn"
-        >ログインしたらここをクリック！</router-link
-      >
+      <router-link to="/Mypage">ログインしたらここをクリック！</router-link>
     </div>
   </div>
 </template>
