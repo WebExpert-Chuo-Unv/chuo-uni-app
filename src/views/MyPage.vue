@@ -3,9 +3,7 @@
     <h1>ログインに成功しました！</h1>
     <UserProfile />
 
-    <div>
-      <router-link to="/LogInPage">ログインページに戻る</router-link>
-    </div>
+    <div class="LogOut"><button @click="signOut">ログアウト</button></div>
     <div class="Form">
       <div>
         <router-link to="/PostForm">作った料理を投稿してみよう！</router-link>
@@ -18,10 +16,17 @@
 </template>
 
 <script>
+import firebase from "firebase";
 import UserProfile from "@/components/UserProfile.vue";
 export default {
   components: {
     UserProfile,
+  },
+  methods: {
+    signOut() {
+      firebase.auth().signOut();
+      this.$router.push("/LogInPage");
+    },
   },
 };
 </script>
