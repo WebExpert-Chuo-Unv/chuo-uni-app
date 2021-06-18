@@ -7,8 +7,6 @@
       </div>
       <div class="sign-in">
         <button @click="signIn">ログイン</button>
-
-        <button @click="signOut">ログアウト</button>
       </div>
 
       <router-link to="/Mypage">ログインしたらここをクリック！</router-link>
@@ -23,10 +21,6 @@ export default {
     signIn() {
       const provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithRedirect(provider);
-    },
-    signOut() {
-      firebase.auth().signOut();
-      this.$router.push("/LogInPage");
     },
   },
   created() {

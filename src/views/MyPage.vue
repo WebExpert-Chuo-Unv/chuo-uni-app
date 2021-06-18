@@ -1,15 +1,18 @@
 <template>
-  <div class="SuccessLogIn">
-    <h1>ログインに成功しました！</h1>
-    <UserProfile />
-    <div class="Form">
-      <div>
-        <router-link to="/PostForm">作った料理を投稿してみよう！</router-link>
+  <div>
+    <div class="title">みんなでシェアご飯！</div>
+    <div class="SuccessLogIn">
+      <h1>ログインに成功しました！</h1>
+      <UserProfile />
+      <div class="Form">
+        <div>
+          <router-link to="/PostForm">作った料理を投稿してみよう！</router-link>
+        </div>
+        <div>
+          <router-link to="/Pegeview">皆の作った料理を見てみよう！</router-link>
+        </div>
+        <div class="LogOut"><button @click="signOut">ログアウト</button></div>
       </div>
-      <div>
-        <router-link to="/Pegeview">皆の作った料理を見てみよう！</router-link>
-      </div>
-      <div class="LogOut"><button @click="signOut">ログアウト</button></div>
     </div>
   </div>
 </template>
@@ -58,5 +61,20 @@ export default {
   background-color: #fc0800;
   box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
   color: #fff;
+}
+body {
+  background-image: url("~@/assets/aa.jpeg");
+  background-size: 100%;
+  backdrop-filter: blur(5px);
+}
+.title {
+  color: rgb(112, 12, 226);
+  font-size: 2em;
+  font-weight: 100;
+  margin: 2em 0;
+  position: relative;
+  padding: 0.5em 1.5em;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
 }
 </style>
