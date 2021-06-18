@@ -1,7 +1,5 @@
 <template>
-  <div class="NotLogIn">
-    <!-- <h1>※まだログインしていません！※</h1> -->
-  </div>
+  <div class="NotLogIn"></div>
 </template>
 <style>
 .NotLogIn {
