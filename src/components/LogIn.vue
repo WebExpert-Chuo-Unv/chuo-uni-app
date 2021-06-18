@@ -8,8 +8,6 @@
       <div class="sign-in">
         <button @click="signIn">ログイン</button>
       </div>
-
-      <router-link to="/Mypage">ログインしたらここをクリック！</router-link>
     </div>
   </div>
 </template>

@@ -33,13 +33,10 @@ export default {
 };
 </script>
 <style>
-.SuccessLogIn {
-  color: greenyellow;
-}
 .Form {
   position: absolute;
-  right: 10px;
-  top: 350px;
+  left: 10px;
+  top: 450px;
   border: solid;
   color: rgb(2, 3, 3);
 }
@@ -76,5 +73,10 @@ body {
   padding: 0.5em 1.5em;
   border-top: solid 2px black;
   border-bottom: solid 2px black;
+}
+.SuccessLogIn {
+  color: greenyellow;
+  font-size: 40px;
+  text-align: center;
 }
 </style>
