@@ -68,6 +68,7 @@ export default {
       firebase
         .firestore()
         .collection("result")
+
         .add({
           ニックネーム: this.name,
           いつ: this.time,
