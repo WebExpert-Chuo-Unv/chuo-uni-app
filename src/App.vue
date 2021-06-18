@@ -1,16 +1,20 @@
 <template>
   <div>
-    <div><PostForm /></div>
+    <LogIn v-if="!user" />
+    <router-view v-else />
   </div>
 </template>
 
 <script>
-import PostForm from "@/components/PostForm.vue";
+import LogIn from "@/components/LogIn.vue";
 export default {
   components: {
-    PostForm,
+    LogIn,
+  },
+  computed: {
+    user() {
+      return this.$auth.currentUser.uid;
+    },
   },
 };
 </script>
-
-<style></style>

@@ -97,7 +97,7 @@ export default {
     },
     remove() {
       this.uploadedImage = false;
-    },
+    }
   },
   mounted: function(){
     console.log("image")
@@ -130,6 +130,9 @@ body {
   text-align: center;
   width: 70%;
   height: 80vh;
+  background-image: url("~@/assets/page.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .comment{
   height: 20vh;

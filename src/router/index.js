@@ -1,36 +1,52 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-
+import Vue from "vue";
+import VueRouter from "vue-router";
+import LogInPage from "@/views/LogInPage.vue";
 import MyPage from "@/views/MyPage.vue";
+import PostForm from "@/components/PostForm.vue";
+import firebase from "firebase";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    redirect: "/LogInPage",
   },
   {
-    path: '/',
-    name: 'MyPage',
-    component: MyPage
+    path: "/LogInPage/",
+    name: "LogInPage",
+    component: LogInPage,
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+    path: "/MyPage",
+    name: "MyPage",
+    component: MyPage,
+  },
+  {
+    path: "/PostForm",
+    name: "PostForm",
+    component: PostForm,
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+// Vue Router のグローバルガードで、ログインしてない場合は、BeforeSignInにしか行けなくする。
+
+let isSignedIn = () => {
+  return firebase.auth().currentUser;
+};
+
+router.beforeEach((to, from, next) => {
+  if (to.name !== "LogInPage" && !isSignedIn()) {
+    next("/LogInPage");
+  } else {
+    next();
+  }
+});
+
+export default router;
