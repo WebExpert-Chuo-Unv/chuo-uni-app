@@ -42,6 +42,9 @@
           <h3><p>コメント</p></h3>
           <textarea v-model="comments" placeholder="なんでもどうぞ！" class="comment-field"></textarea>
         </div>
+        <div class=back>
+          <button v-on:click="scrollTop">戻る</button>
+        </div>
         <div class="submit">
           <button v-on:click="AfterButton">送信</button>
         </div>
@@ -64,6 +67,12 @@ export default {
     };
   },
   methods: {
+    scrollTop: function(){
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    },
     AfterButton() {
       firebase
         .firestore()
