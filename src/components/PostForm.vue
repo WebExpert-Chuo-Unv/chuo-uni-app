@@ -43,7 +43,7 @@
           <textarea v-model="comments" placeholder="なんでもどうぞ！" class="comment-field"></textarea>
         </div>
         <div class=back>
-          <button v-on:click="scrollTop">戻る</button>
+          <router-link to="/MyPage">戻る</router-link>
         </div>
         <div class="submit">
           <button v-on:click="AfterButton">送信</button>
@@ -67,22 +67,20 @@ export default {
     };
   },
   methods: {
-    scrollTop: function(){
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    },
     AfterButton() {
       firebase
         .firestore()
         .collection("result")
-
         .add({
           ニックネーム: this.name,
           いつ: this.time,
           料理名: this.CookingName,
           感想: this.comments,
+        })
+        .storage()
+        .collection("image")
+        .add({
+          画像: this.file,
         });
     },
     onFileChange(e) {
