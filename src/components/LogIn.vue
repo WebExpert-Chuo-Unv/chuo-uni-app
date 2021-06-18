@@ -10,7 +10,7 @@
 
         <button @click="signOut">ログアウト</button>
       </div>
-      <router-view />
+
       <router-link to="/Mypage">ログインしたらここをクリック！</router-link>
     </div>
   </div>
@@ -26,8 +26,15 @@ export default {
     },
     signOut() {
       firebase.auth().signOut();
-      this.$router.push("/BeforeSignIn");
+      this.$router.push("/LogInPage");
     },
+  },
+  created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$router.push({ path: "/MyPage", params: { uid: user.uid } });
+      }
+    });
   },
 };
 </script>

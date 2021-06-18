@@ -62,7 +62,7 @@ export default {
 </script>
 <style>
 body {
-  background-image: url("~@/assets/PostForm2.jpg");
+  background-image: url("~@/assets/page.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
