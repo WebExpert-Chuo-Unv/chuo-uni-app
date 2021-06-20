@@ -11,8 +11,8 @@
         <div>
           <router-link to="/Pegeview">皆の作った料理を見てみよう！</router-link>
         </div>
-        <div class="LogOut"><button @click="signOut">ログアウト</button></div>
       </div>
+      <div class="LogOut"><button @click="signOut">ログアウト</button></div>
     </div>
   </div>
 </template>
@@ -47,11 +47,13 @@ export default {
   text-transform: uppercase;
   letter-spacing: 2.5px;
   color: #000;
-  background-color: #fff;
+  background-color: orange;
   border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   padding: 2rem;
+  position: absolute;
+  right: 30px;
 }
 
 .LogOut button:hover {
