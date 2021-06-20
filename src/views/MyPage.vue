@@ -9,7 +9,7 @@
           <router-link to="/PostForm">作った料理を投稿してみよう！</router-link>
         </div>
         <div>
-          <router-link to="/Pegeview">皆の作った料理を見てみよう！</router-link>
+          <router-link to="/PageView">皆の作った料理を見てみよう！</router-link>
         </div>
       </div>
       <div class="LogOut"><button @click="signOut">ログアウト</button></div>

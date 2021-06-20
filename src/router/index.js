@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import LogInPage from "@/views/LogInPage.vue";
 import MyPage from "@/views/MyPage.vue";
 import PostForm from "@/components/PostForm.vue";
+import PageView from "@/components/PageView.vue";
 import firebase from "firebase";
 
 Vue.use(VueRouter);
@@ -26,6 +27,11 @@ const routes = [
     path: "/PostForm",
     name: "PostForm",
     component: PostForm,
+  },
+  {
+    path: "/PageView",
+    name: "PageView",
+    component: PageView,
   },
 ];
 
