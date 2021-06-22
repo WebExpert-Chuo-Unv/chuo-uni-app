@@ -84,6 +84,7 @@ export default {
           いつ: this.time,
           料理名: this.CookingName,
           感想: this.comments,
+          いいね: 0,
         })
         .storage()
         .collection("image")
