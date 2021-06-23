@@ -1,8 +1,9 @@
 <template>
   <div class="app">
+    <div>今日は {{ myDate }}</div>
     <div class="iine" v-for="article in results" :key="article.id">
-      <h1>{{ article.いいね }}</h1>
-      <button @click="good(article.いいね, article.id)">👍</button>
+      <h1>{{ article.like }}</h1>
+      <button @click="good(article.like, article.id)">👍</button>
     </div>
     <input type="text" placeholder="コメント" v-model="feedback" />
     <button v-on:click="send">送信</button>
@@ -24,6 +25,7 @@ export default {
       feedback: "",
       count: 0,
       results: [],
+      myDate: "",
     };
   },
   props: ["todayDate"],
@@ -91,10 +93,10 @@ export default {
           });
         });
       });
-    if (this.today < 10) {
-      this.myDate = this.todayDate.month + "-0" + this.today.day;
+    if (this.todayDate.day < 10) {
+      this.myDate = this.todayDate.month + "-0" + this.todayDate.day;
     } else {
-      this.myDate = this.todayDate.month + "-" + this.today.day;
+      this.myDate = this.todayDate.month + "-" + this.todayDate.day;
     }
   },
 };

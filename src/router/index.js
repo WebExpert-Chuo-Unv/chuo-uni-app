@@ -39,6 +39,7 @@ const routes = [
     path: "/PageView",
     name: "PageView",
     component: PageView,
+    props: true,
   },
   {
     path: "/Calendar",
