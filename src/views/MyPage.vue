@@ -8,7 +8,7 @@
     </div>
     <div class="Form">
       <div>
-        <router-link to="/PostForm">作った料理を投稿してみよう！</router-link>
+        <router-link to="/viewPage">作った料理を投稿してみよう！</router-link>
       </div>
       <div>
         <router-link to="/Pegeview">皆の作った料理を見てみよう！</router-link>
