@@ -24,7 +24,13 @@
           v-for="(week, index) in calendars"
           :key="index"
         >
-          <div class="calendar-daily" v-for="(day, index) in week" :key="index">
+          <router-link
+            class="calendar-daily"
+            v-for="(day, index) in week"
+            :key="index"
+            v-on:click="alerttest(day)"
+            :to="{ name: 'PageView', params: { todayDate: day } }"
+          >
             <div class="calendar-day">
               {{ day.day }}
             </div>
@@ -32,12 +38,11 @@
               <div
                 class="calendar-event"
                 :style="`background-color:${dayEvent.color}`"
-                v-on:click="alerttest()"
               >
                 {{ dayEvent.name }}
               </div>
             </div>
-          </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -118,8 +123,8 @@ export default {
     prevMonth() {
       this.currentDate = moment(this.currentDate).subtract(1, "month");
     },
-    alerttest() {
-      console.log("押せました");
+    alerttest(day) {
+      console.log(day);
     },
   },
   computed: {

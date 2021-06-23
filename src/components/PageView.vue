@@ -21,6 +21,7 @@ export default {
       results: [],
     };
   },
+  props: ["todayDate"],
   methods: {
     good(number, id) {
       if (this.count <= 0) {
@@ -41,13 +42,10 @@ export default {
     },
 
     send() {
-      firebase
-        .firestore()
-        .collection("comments")
-        .add({
-          コメント: this.feedback, //
-          //toWho:uid
-        });
+      firebase.firestore().collection("comments").add({
+        コメント: this.feedback, //
+        //toWho:uid
+      });
     },
   },
   created() {
@@ -78,6 +76,11 @@ export default {
           });
         });
       });
+    if (this.today < 10) {
+      this.myDate = this.todayDate.month + "-0" + this.today.day;
+    } else {
+      this.myDate = this.todayDate.month + "-" + this.today.day;
+    }
   },
 };
 </script>
