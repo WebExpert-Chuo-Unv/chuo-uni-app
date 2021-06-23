@@ -40,7 +40,7 @@ export default {
         .firestore()
         .collection("result")
         .doc(id)
-        .update({ いいね: number + this.count });
+        .update({ like: number + this.count });
 
       //いいね:いいねのかず + this.count
       this.results.length = 0;
@@ -81,8 +81,8 @@ export default {
     firebase
       .firestore()
       .collection("result")
-      .where("ニックネーム", "==", this.$auth.currentUser.displayName)
-      .where("ひづけ", "==", "2021-06-21")
+      .where("name", "==", this.$auth.currentUser.displayName)
+      .where("dates", "==", "2021-06-21")
       .onSnapshot((snapshot) => {
         snapshot.docs.forEach((doc) => {
           this.results.push({

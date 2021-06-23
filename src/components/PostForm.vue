@@ -80,10 +80,10 @@ export default {
         .firestore()
         .collection("result")
         .add({
-          ニックネーム: this.name,
-          いつ: this.time,
-          料理名: this.CookingName,
-          感想: this.comments,
+          name: this.name,
+          when: this.time,
+          dish: this.CookingName,
+          comments: this.comments,
           いいね: 0,
         })
         .storage()
