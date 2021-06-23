@@ -11,6 +11,9 @@
         <div>
           <router-link to="/PageView">皆の作った料理を見てみよう！</router-link>
         </div>
+        <div>
+          <router-link to="/Calendar">カレンダーはこちら</router-link>
+        </div>
       </div>
       <div class="LogOut"><button @click="signOut">ログアウト</button></div>
     </div>
