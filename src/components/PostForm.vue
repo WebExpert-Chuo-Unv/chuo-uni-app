@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- こっち使わない -->
     <div class="title">みんなでシェアご飯！</div>
     <div class="app">
       <h1>みんなの作ったご飯を共有しよう！</h1>
@@ -80,16 +81,17 @@ export default {
         .firestore()
         .collection("result")
         .add({
-          name: this.name,
+          name: this.name, //ここを this.$auth.currentUser.displayNameにする
           when: this.time,
           dish: this.CookingName,
           comments: this.comments,
-          いいね: 0,
+          いいね: 0, //likeに変える
+          //dates
         })
         .storage()
         .collection("image")
         .add({
-          画像: this.file,
+          画像: this.file, //画像をimageにする
         });
     },
     onFileChange(e) {

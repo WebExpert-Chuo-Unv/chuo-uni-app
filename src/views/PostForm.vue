@@ -79,7 +79,7 @@ export default {
         .firestore()
         .collection("result")
         .add({
-          name: this.name,
+          name: this.$auth.currentUser.displayName,
           dates: this.date,
           when: this.time,
           dish: this.CookingName,
