@@ -6,6 +6,11 @@
     </div>
     <input type="text" placeholder="コメント" v-model="feedback" />
     <button v-on:click="send">送信</button>
+    <div>
+      <p v-for="comment in comments" :key="comment">
+        {{ comment.コメント }}
+      </p>
+    </div>
   </div>
 </template>
 
@@ -48,6 +53,7 @@ export default {
           コメント: this.feedback, //
           //toWho:uid
         });
+      this.comments.length = 0;
     },
   },
   created() {
@@ -55,8 +61,7 @@ export default {
       .firestore()
       .collection("comments")
       //.where("toWho", "==", "yamada")
-      .get()
-      .then((snapshot) => {
+      .onSnapshot((snapshot) => {
         snapshot.docs.forEach((doc) => {
           this.comments.push({
             id: doc.id,
@@ -68,8 +73,8 @@ export default {
     firebase
       .firestore()
       .collection("result")
-      .where("ニックネーム", "==", "yamada")
-      .where("ひづけ", "==", "2021-6-21")
+      .where("ニックネーム", "==", this.$auth.currentUser.displayName)
+      .where("ひづけ", "==", "2021-06-21")
       .onSnapshot((snapshot) => {
         snapshot.docs.forEach((doc) => {
           this.results.push({
