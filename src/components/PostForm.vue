@@ -1,57 +1,60 @@
 <template>
-  <div class="app">
-    <h1>みんなの作ったご飯を共有しよう！</h1>
-    <div class="content">
-      <h3>ユーザーネーム（匿名可）</h3>
-      <input type="text" placeholder="山田太郎" v-model="name" />
-      <p class="privacy">※個人情報の取り扱いに注意してください！※</p>
+  <div>
+    <div class="title">みんなでシェアご飯！</div>
+    <div class="app">
+      <h1>みんなの作ったご飯を共有しよう！</h1>
+      <div class="content">
+        <h3>ユーザーネーム（匿名可）</h3>
+        <input type="text" placeholder="山田太郎" v-model="name" />
+        <p class="privacy">※個人情報の取り扱いに注意してください！※</p>
 
-      <h3>料理名</h3>
-      <input type="text" placeholder="ハヤシライス" v-model="CookingName" />
-      <p>
-        <label v-show="!uploadedImage" class="input-item__label"
-          >画像を選択
-          <input type="file" @change="onFileChange" />
-        </label>
-      </p>
+        <h3>料理名</h3>
+        <input type="text" placeholder="ハヤシライス" v-model="CookingName" />
+        <p>
+          <label v-show="!uploadedImage" class="input-item__label"
+            >画像を選択
+            <input type="file" @change="onFileChange" />
+          </label>
+        </p>
 
-      <div class="preview-item">
-        <img
-          v-show="uploadedImage"
-          class="preview-item-file"
-          :src="uploadedImage"
-          alt=""
-        />
-        <div v-show="uploadedImage" class="preview-item-btn" @click="remove">
-          <p class="preview-item-name">{{ img_name }}</p>
+        <div class="preview-item">
+          <img
+            v-show="uploadedImage"
+            class="preview-item-file"
+            :src="uploadedImage"
+            alt=""
+          />
+          <div v-show="uploadedImage" class="preview-item-btn" @click="remove">
+            <p class="preview-item-name">{{ img_name }}</p>
+          </div>
         </div>
-      </div>
 
-      <div class="option">
-        <h3><p>朝ごはん？昼ごはん？夜ごはん？</p></h3>
-        <select v-model="time">
-          <option disabled value="sentaku">
-            朝ごはん？昼ごはん？夜ごはん？"
-          </option>
-          <option>朝ごはん</option>
-          <option>昼ごはん</option>
-          <option>夜ごはん</option>
-        </select>
-      </div>
+        <div class="option">
+          <h3><p>朝ごはん？昼ごはん？夜ごはん？</p></h3>
+          <select v-model="time">
+            <option disabled value="sentaku">
+              朝ごはん？昼ごはん？夜ごはん？"
+            </option>
+            <option>朝ごはん</option>
+            <option>昼ごはん</option>
+            <option>夜ごはん</option>
+          </select>
+        </div>
 
-      <div class="comment">
-        <h3><p>コメント</p></h3>
-        <textarea
-          v-model="comments"
-          placeholder="なんでもどうぞ！"
-          class="comment-field"
-        ></textarea>
-      </div>
-      <div class="back">
-        <router-link to="/MyPage">戻る</router-link>
-      </div>
-      <div class="submit">
-        <button v-on:click="AfterButton">送信</button>
+        <div class="comment">
+          <h3><p>コメント</p></h3>
+          <textarea
+            v-model="comments"
+            placeholder="なんでもどうぞ！"
+            class="comment-field"
+          ></textarea>
+        </div>
+        <div class="back">
+          <router-link to="/MyPage">戻る</router-link>
+        </div>
+        <div class="submit">
+          <button v-on:click="AfterButton">送信</button>
+        </div>
       </div>
     </div>
   </div>
@@ -81,6 +84,7 @@ export default {
           いつ: this.time,
           料理名: this.CookingName,
           感想: this.comments,
+          いいね: 0,
         })
         .storage()
         .collection("image")
@@ -151,5 +155,16 @@ body {
   width: 30%;
   image-rendering: auto;
   border-radius: 10px;
+}
+
+.title {
+  color: rgb(112, 12, 226);
+  font-size: 2em;
+  font-weight: 100;
+  margin: 2em 0;
+  position: relative;
+  padding: 0.5em 1.5em;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
 }
 </style>

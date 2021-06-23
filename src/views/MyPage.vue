@@ -9,10 +9,10 @@
           <router-link to="/PostForm">作った料理を投稿してみよう！</router-link>
         </div>
         <div>
-          <router-link to="/Pegeview">皆の作った料理を見てみよう！</router-link>
+          <router-link to="/PageView">皆の作った料理を見てみよう！</router-link>
         </div>
-        <div class="LogOut"><button @click="signOut">ログアウト</button></div>
       </div>
+      <div class="LogOut"><button @click="signOut">ログアウト</button></div>
     </div>
   </div>
 </template>
@@ -33,13 +33,10 @@ export default {
 };
 </script>
 <style>
-.SuccessLogIn {
-  color: greenyellow;
-}
 .Form {
   position: absolute;
-  right: 10px;
-  top: 350px;
+  left: 10px;
+  top: 450px;
   border: solid;
   color: rgb(2, 3, 3);
 }
@@ -50,11 +47,13 @@ export default {
   text-transform: uppercase;
   letter-spacing: 2.5px;
   color: #000;
-  background-color: #fff;
+  background-color: orange;
   border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   padding: 2rem;
+  position: absolute;
+  right: 30px;
 }
 
 .LogOut button:hover {
@@ -76,5 +75,10 @@ body {
   padding: 0.5em 1.5em;
   border-top: solid 2px black;
   border-bottom: solid 2px black;
+}
+.SuccessLogIn {
+  color: greenyellow;
+  font-size: 40px;
+  text-align: center;
 }
 </style>
