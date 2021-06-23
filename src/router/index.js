@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import LogInPage from "@/views/LogInPage.vue";
 import MyPage from "@/views/MyPage.vue";
 import PostForm from "@/components/PostForm.vue";
+import viewPage from "@/views/viewPage.vue";
 import firebase from "firebase";
 
 Vue.use(VueRouter);
