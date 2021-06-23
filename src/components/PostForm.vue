@@ -59,11 +59,13 @@ export default {
     return {
       result: [],
       name: "",
+      date: "",
       time: "",
       CookingName: "",
       comments: "",
       uploadedImage: '',
       img_name:'',
+      img:"",
     };
   },
   methods: {
@@ -72,21 +74,21 @@ export default {
         .firestore()
         .collection("result")
         .add({
-          ニックネーム: this.name,
-          いつ: this.time,
-          料理名: this.CookingName,
-          感想: this.comments,
+          name: this.name,
+          dates: this.date,
+          when: this.time,
+          dish: this.CookingName,
+          comments: this.comments,
+          img: this.img_name,
         })
-        .storage()
-        .collection("image")
-        .add({
-          画像: this.file,
-        });
+      firebase
+        .storage().ref().child(this.img.name).put(this.img);
     },
     onFileChange(e) {
       const files = e.target.files || e.dataTransfer.files;
       this.createImage(files[0]);
       this.img_name = files[0].name;
+      this.img = files[0]
     },
     createImage(file) {
       const reader = new FileReader();
