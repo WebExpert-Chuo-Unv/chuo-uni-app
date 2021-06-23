@@ -3,14 +3,14 @@
     <div class="content">
       <div>
         <div>
-          <router-link to="/viewpage">閲覧ページ</router-link>
+          <!-- <router-link to="/viewpage">閲覧ページ</router-link> -->
         </div>
         <router-view />
       </div>
       <h2>カレンダー{{ currentDate }}</h2>
       <div>
         <div>
-          <router-link to="/viewpage">閲覧ページ</router-link>
+          <!-- <router-link to="/viewpage">閲覧ページ</router-link> -->
         </div>
         <router-view />
       </div>
