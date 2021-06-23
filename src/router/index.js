@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import LogInPage from "@/views/LogInPage.vue";
 import MyPage from "@/views/MyPage.vue";
-import PostForm from "@/components/PostForm.vue";
+import PostForm from "@/views/PostForm.vue";
 import PageView from "@/components/PageView.vue";
 import firebase from "firebase";
 import viewpage from "@/components/viewpage.vue";

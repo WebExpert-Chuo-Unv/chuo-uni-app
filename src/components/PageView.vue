@@ -67,6 +67,11 @@ export default {
     },
   },
   created() {
+    if (this.todayDate.day < 10) {
+      this.myDate = this.todayDate.month + "-0" + this.todayDate.day;
+    } else {
+      this.myDate = this.todayDate.month + "-" + this.todayDate.day;
+    }
     firebase
       .firestore()
       .collection("comments")
@@ -84,7 +89,7 @@ export default {
       .firestore()
       .collection("result")
       .where("name", "==", this.$auth.currentUser.displayName)
-      .where("dates", "==", "2021-06-21")
+      .where("dates", "==", this.myDate)
       .onSnapshot((snapshot) => {
         snapshot.docs.forEach((doc) => {
           this.results.push({
@@ -93,11 +98,6 @@ export default {
           });
         });
       });
-    if (this.todayDate.day < 10) {
-      this.myDate = this.todayDate.month + "-0" + this.todayDate.day;
-    } else {
-      this.myDate = this.todayDate.month + "-" + this.todayDate.day;
-    }
   },
 };
 </script>

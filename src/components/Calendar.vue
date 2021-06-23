@@ -55,20 +55,20 @@ export default {
     return {
       currentDate: moment(),
       events: [
-        {
-          id: 1,
-          name: "ミーティング",
-          start: "2021-06-01",
-          end: "2021-06-01",
-          color: "blue",
-        },
-        {
-          id: 2,
-          name: "イベント",
-          start: "2021-06-02",
-          end: "2021-06-03",
-          color: "limegreen",
-        },
+        // {
+        //   id: 1,
+        //   name: "ミーティング",
+        //   start: "2021-06-01",
+        //   end: "2021-06-01",
+        //   color: "blue",
+        // },
+        // {
+        //   id: 2,
+        //   name: "イベント",
+        //   start: "2021-06-02",
+        //   end: "2021-06-03",
+        //   color: "limegreen",
+        // },
       ],
       dayEvents: null,
     };
@@ -132,15 +132,15 @@ export default {
       return this.getCalendar();
     },
   },
-  mounted() {
-    this.events.push({
-      id: 3,
-      name: "練習",
-      start: "2021-06-18",
-      end: "2021-06-18",
-      color: "green",
-    });
-  },
+  // mounted() {
+  //   this.events.push({
+  //     id: 3,
+  //     name: "練習",
+  //     start: "2021-06-18",
+  //     end: "2021-06-18",
+  //     color: "green",
+  //   });
+  // },
 };
 </script>
 <style>
