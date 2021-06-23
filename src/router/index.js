@@ -24,11 +24,7 @@ const routes = [
     name: "MyPage",
     component: MyPage,
   },
-  {
-    path: "/PostForm",
-    name: "PostForm",
-    component: PostForm,
-  },
+
   {
     path: "/viewpage",
     name: "viewpage",
@@ -46,6 +42,11 @@ const routes = [
     name: "Calendar",
     component: Calendar,
     props: true,
+  },
+  {
+    path: "/PostForm",
+    name: "PostForm",
+    component: PostForm,
   },
 ];
 

@@ -1,7 +1,9 @@
 import Vue from "vue";
 import firebase from "firebase";
 import "firebase/firestore";
+import "firebase/storage";
 import "firebase/auth";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBRKfQatNySFHdmYfgZu3qEn3cyyN2yF7w",
   authDomain: "chuo-univ-app.firebaseapp.com",
@@ -11,7 +13,6 @@ const firebaseConfig = {
   appId: "1:627399301989:web:2669703b003df6da719f8c",
   measurementId: "G-ZJL0HDJGY4",
 };
-
 firebase.initializeApp(firebaseConfig);
 const initialUserState = {
   uid: "",
