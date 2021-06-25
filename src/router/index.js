@@ -5,7 +5,7 @@ import MyPage from "@/views/MyPage.vue";
 import PostForm from "@/views/PostForm.vue";
 import PageView from "@/components/PageView.vue";
 import firebase from "firebase";
-import viewpage from "@/components/viewpage.vue";
+import viewPage from "@/components/viewPage.vue";
 import Calendar from "@/components/Calendar.vue";
 Vue.use(VueRouter);
 
@@ -26,9 +26,9 @@ const routes = [
   },
 
   {
-    path: "/viewpage",
-    name: "viewpage",
-    component: viewpage,
+    path: "/viewPage",
+    name: "viewPage",
+    component: viewPage,
     props: true,
   },
   {

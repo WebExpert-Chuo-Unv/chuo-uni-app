@@ -29,7 +29,7 @@
             v-for="(day, index) in week"
             :key="index"
             v-on:click="alerttest(day)"
-            :to="{ name: 'PageView', params: { todayDate: day } }"
+            :to="{ name: 'viewPage', params: { todayDate: day } }"
           >
             <div class="calendar-day">
               {{ day.day }}
