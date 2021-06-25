@@ -5,8 +5,6 @@
       <DatePick />
     </div> -->
     <div class="content">
-      <h3>ユーザーネーム（匿名可）</h3>
-      <input type="text" placeholder="山田太郎" v-model="name" />
       <p class="privacy">※個人情報の取り扱いに注意してください！※</p>
 
       <h3>料理名</h3>
