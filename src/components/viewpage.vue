@@ -1,9 +1,5 @@
 <template>
   <div>
-    <div class="date">
-      今日は {{ myDate }}
-    </div>
-
     <div class="category">
       <div class="breakfirst">
         <h3>朝食</h3>
@@ -85,11 +81,6 @@ export default {
           });
         });
       });
-    if (this.todayDate.day < 10) {
-        this.myDate = this.todayDate.month + "-0" + this.todayDate.day;
-      } else {
-        this.myDate = this.todayDate.month + "-" + this.todayDate.day;
-      }
 },
 
 };

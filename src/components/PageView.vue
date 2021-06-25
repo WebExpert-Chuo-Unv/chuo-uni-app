@@ -1,16 +1,13 @@
 <template>
   <div class="app">
-    <div class="like" v-for="article in results" :key="article.id">
-      <h3>{{ article.like }}</h3>
+    <div>今日は {{ myDate }}</div>
+    <div class="iine" v-for="article in results" :key="article.id">
+      <h1>{{ article.like }}</h1>
       <button @click="good(article.like, article.id)">👍</button>
     </div>
+    <input type="text" placeholder="コメント" v-model="feedback" />
+    <button v-on:click="send">送信</button>
     <div>
-      <input type="text" placeholder="コメント" v-model="feedback" size="30*60" />
-    </div>
-    <div class="send-button">
-      <button  v-on:click="send">送信</button>
-    </div>
-    <div class="comment">
       <p v-for="comment in comments" :key="comment">
         {{ comment.コメント }}
       </p>
@@ -28,6 +25,7 @@ export default {
       feedback: "",
       count: 0,
       results: [],
+      myDate: "",
       myUrl:[],
     };
   },
@@ -70,6 +68,11 @@ export default {
     },
   },
   created() {
+    if (this.todayDate.day < 10) {
+      this.myDate = this.todayDate.month + "-0" + this.todayDate.day;
+    } else {
+      this.myDate = this.todayDate.month + "-" + this.todayDate.day;
+    }
     firebase
       .firestore()
       .collection("comments")
@@ -83,7 +86,7 @@ export default {
         });
       });
     //if this.comment.length == 0     this.isComment == false;
-      firebase
+    firebase
       .firestore()
       .collection("result")
       .where("name", "==", this.$auth.currentUser.displayName)
@@ -96,18 +99,27 @@ export default {
           });
         });
       });
-    
+      for(let i=0; i <3 ;i++){
+        firebase.storage().ref().child(this.results[i].img).getDownloadURL().then(function(url) {
+        // `url` is the download URL for 'images/stars.jpg'
+
+        // This can be downloaded directly:
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = 'blob';
+        xhr.open('GET', url);
+        xhr.send();
+
+        // Or inserted into an <img> element:
+        //var img = document.getElementById('myimg');
+        //img.src = url;
+        this.myUrl.push(url)
+      }).catch(function(error) {
+        // Handle any errors
+        alert(error)
+      });
+    }
   },
 };
 </script>
 
-<style>
-.app{
-  background-color: greenyellow;
-  width: 30vh;
-  height: 30vh;
-}
-.comment-form{
-  size: 500*500;
-}
-</style>
+<style></style>
