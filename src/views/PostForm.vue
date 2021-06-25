@@ -45,7 +45,7 @@
         <h3><p>コメント</p></h3>
         <textarea
           v-model="comments"
-          placeholder="なんでもどうぞ！"
+          placeholder="材料や作り方など自由に書いてください！"
           class="comment-field"
         ></textarea>
       </div>
