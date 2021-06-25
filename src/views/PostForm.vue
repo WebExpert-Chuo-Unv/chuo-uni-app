@@ -61,8 +61,8 @@
 </template>
 
 <script>
-// import DatePick from "@/components/DatePick.vue";
 import firebase from "firebase";
+// import DatePick from "@/components/DatePick.vue";
 export default {
   // components: {
   //   DatePick,
