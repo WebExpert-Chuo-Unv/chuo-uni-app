@@ -17,6 +17,7 @@
       <div class="button-area">
         <button @click="prevMonth" class="button">前の月</button>
         <button @click="nextMonth" class="button">次の月</button>
+        <router-link to="/MyPage">マイページに戻る</router-link>
       </div>
       <div class="calendar">
         <div

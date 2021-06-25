@@ -9,9 +9,6 @@
           ><span>01</span>
           作った料理を投稿してみよう！
         </router-link>
-        <router-link class="viewForm" to="/PageView"
-          ><span>02</span> 皆の作った料理を見てみよう！</router-link
-        >
         <router-link class="calendarForm" to="/Calendar"
           ><span>03</span>カレンダーはこちら</router-link
         >
@@ -81,7 +78,7 @@ body {
   text-align: center;
 }
 .SuccessLogIn {
-  color: greenyellow;
+  color: rgb(3, 3, 3);
   font-size: 40px;
   text-align: center;
 }

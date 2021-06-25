@@ -1,9 +1,11 @@
 <template>
   <div class="app">
     <h1>みんなの作ったご飯を共有しよう！</h1>
+    <div>
+      <input type="date" v-model="detapick" />
+      <!-- <DatePick /> -->
+    </div>
     <div class="content">
-      <h3>ユーザーネーム（匿名可）</h3>
-      <input type="text" placeholder="山田太郎" v-model="name" />
       <p class="privacy">※個人情報の取り扱いに注意してください！※</p>
 
       <h3>料理名</h3>
@@ -59,18 +61,22 @@
 
 <script>
 import firebase from "firebase";
+// import DatePick from "@/components/DatePick.vue";
 export default {
+  // components: {
+  //   DatePick,
+  // },
   data() {
     return {
       result: [],
       name: "",
-      date: "",
       time: "",
       CookingName: "",
       comments: "",
       uploadedImage: "",
       img_name: "",
       img: "",
+      detapick: new Date(),
     };
   },
   methods: {
@@ -79,14 +85,15 @@ export default {
         .firestore()
         .collection("result")
         .add({
-          name: this.name,
-          dates: this.date,
+          name: this.$auth.currentUser.displayName,
+          dates: this.detapick,
           when: this.time,
           dish: this.CookingName,
           comments: this.comments,
           img: this.img_name,
           like: 0,
         });
+
       firebase
         .storage()
         .ref()
