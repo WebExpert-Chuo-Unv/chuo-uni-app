@@ -61,8 +61,8 @@ export default {
         .firestore()
         .collection("comments")
         .add({
-          コメント: this.feedback, //
-          //toWho:uid
+          コメント: this.feedback,
+          toWho: this.$auth.currentUser.displayName,
         });
     },
   },
@@ -75,7 +75,7 @@ export default {
     firebase
       .firestore()
       .collection("comments")
-      //.where("toWho", "==", "yamada")
+      .where("toWho", "==", this.$auth.currentUser.displayName)
       .onSnapshot((snapshot) => {
         snapshot.docs.forEach((doc) => {
           this.comments.push({
@@ -84,7 +84,7 @@ export default {
           });
         });
       });
-    //if this.comment.length == 0     this.isComment == false;
+    this.comment.length == 0, this.isComment == false;
     firebase
       .firestore()
       .collection("result")

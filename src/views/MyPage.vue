@@ -37,11 +37,13 @@ export default {
 </script>
 <style>
 .Form {
-  position: absolute;
-  left: 10px;
-  top: 450px;
-  border: solid;
-  color: rgb(2, 3, 3);
+  padding: 10px 20px;
+  margin: 2em auto;
+  color: #000;
+  width: 100%;
+  background: #f0e68c;
+  border-top: solid 5px #ffa500;
+  border-bottom: solid 5px #ffa500;
 }
 .LogOut button {
   font-weight: bold;
@@ -80,7 +82,7 @@ body {
   border-bottom: solid 2px black;
 }
 .SuccessLogIn {
-  color: greenyellow;
+  color: rgb(3, 3, 3);
   font-size: 40px;
   text-align: center;
 }
