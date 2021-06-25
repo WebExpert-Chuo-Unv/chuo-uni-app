@@ -5,11 +5,12 @@
       <h3>朝食</h3>
       <div v-for="result in results" :key="result.id">
         <div class="cooking" v-if="result.when == '朝ごはん'">
-          <p>
-            {{ result.name }}
-            {{ result.dish }}
-            {{ result.comments }}
-          </p>
+          <div class="asa">
+            <div id="namae">ユーザーネーム：{{ result.name }}</div>
+            <div id="gohan">料理名：{{ result.dish }}</div>
+            <div id="komento">自由記入：{{ result.comments }}</div>
+          </div>
+
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
         </div>
@@ -20,11 +21,11 @@
       <h3>昼食</h3>
       <div v-for="result in results" :key="result.id">
         <div class="cooking" v-if="result.when == '昼ごはん'">
-          <p>
-            {{ result.name }}
-            {{ result.dish }}
-            {{ result.comments }}
-          </p>
+          <div>
+            <div id="namae">ユーザーネーム：{{ result.name }}</div>
+            <div id="gohan">料理名：{{ result.dish }}</div>
+            <div id="komento">自由記入：{{ result.comments }}</div>
+          </div>
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
         </div>
@@ -35,11 +36,11 @@
       <h3>夕食</h3>
       <div v-for="result in results" :key="result.id">
         <div class="cooking" v-if="result.when == '夜ごはん'">
-          <p>
-            {{ result.name }}
-            {{ result.dish }}
-            {{ result.comments }}
-          </p>
+          <div class="yoru">
+            <div id="namae">ユーザーネーム:{{ result.name }}</div>
+            <div id="gohan">料理名：{{ result.dish }}</div>
+            <div id="komento">自由記入：{{ result.comments }}</div>
+          </div>
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
         </div>
@@ -47,7 +48,7 @@
     </div>
     <input type="text" placeholder="コメント" v-model="feedback" />
     <button v-on:click="send">送信</button>
-    <div>
+    <div class="feedback">
       <p v-for="comment in comments" :key="comment">
         {{ comment.コメント }}
       </p>
@@ -146,4 +147,34 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+body {
+  text-align: center;
+}
+.feedback {
+  height: 80px;
+  width: 20em;
+  overflow: auto;
+  margin: 0 auto;
+
+  padding: 1em 1.5em;
+
+  background-color: #fff0f5; /*背景色*/
+  border: 1px solid #9370db; /*線*/
+  color: #000000; /*文字色*/
+  border-radius: 10px; /*角の丸み*/
+}
+.yoru {
+  height: auto;
+  width: 20em;
+
+  margin: 0 auto;
+
+  padding: 1em 1.5em;
+
+  background-color: #fff0f5; /*背景色*/
+  border: 1px solid #9370db; /*線*/
+  color: #000000; /*文字色*/
+  border-radius: 10px; /*角の丸み*/
+}
+</style>
