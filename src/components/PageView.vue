@@ -1,9 +1,49 @@
 <template>
   <div class="app">
     <div>今日は {{ myDate }}</div>
-    <div class="iine" v-for="article in results" :key="article.id">
-      <h1>{{ article.like }}</h1>
-      <button @click="good(article.like, article.id)">👍</button>
+    <div class="breakfirst">
+      <h3>朝食</h3>
+      <div v-for="result in results" :key="result.id">
+        <div class="cooking" v-if="result.when == '朝ごはん'">
+          <p>
+            {{ result.name }}
+            {{ result.dish }}
+            {{ result.comments }}
+          </p>
+          <h1>{{ result.like }}</h1>
+          <button @click="good(result.like, result.id)">👍</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="lunch">
+      <h3>昼食</h3>
+      <div v-for="result in results" :key="result.id">
+        <div class="cooking" v-if="result.when == '昼ごはん'">
+          <p>
+            {{ result.name }}
+            {{ result.dish }}
+            {{ result.comments }}
+          </p>
+          <h1>{{ result.like }}</h1>
+          <button @click="good(result.like, result.id)">👍</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="dinner">
+      <h3>夕食</h3>
+      <div v-for="result in results" :key="result.id">
+        <div class="cooking" v-if="result.when == '夜ごはん'">
+          <p>
+            {{ result.name }}
+            {{ result.dish }}
+            {{ result.comments }}
+          </p>
+          <h1>{{ result.like }}</h1>
+          <button @click="good(result.like, result.id)">👍</button>
+        </div>
+      </div>
     </div>
     <input type="text" placeholder="コメント" v-model="feedback" />
     <button v-on:click="send">送信</button>

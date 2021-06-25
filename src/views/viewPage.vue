@@ -6,7 +6,7 @@
       <div class="breakfirst">
         <h3>朝食</h3>
         <div v-for="result in results" :key="result.id">
-          <div class="cooking"  v-if='result.when == "朝ごはん"'>
+          <div class="cooking" v-if="result.when == '朝ごはん'">
             <p>
               {{ result.name }}
               {{ result.dish }}
@@ -19,7 +19,7 @@
       <div class="lunch">
         <h3>昼食</h3>
         <div v-for="result in results" :key="result.id">
-          <div class="cooking" v-if='result.when == "昼ごはん" '>
+          <div class="cooking" v-if="result.when == '昼ごはん'">
             <p>
               {{ result.name }}
               {{ result.dish }}
@@ -32,7 +32,7 @@
       <div class="dinner">
         <h3>夕食</h3>
         <div v-for="result in results" :key="result.id">
-          <div class="cooking" v-if='result.when == "夜ごはん" '>
+          <div class="cooking" v-if="result.when == '夜ごはん'">
             <p>
               {{ result.name }}
               {{ result.dish }}
@@ -55,12 +55,12 @@ export default {
     };
   },
   created() {
-    console.log(this.$auth.currentUser.displayName)
+    console.log(this.$auth.currentUser.displayName);
     firebase
       .firestore()
       .collection("result")
       .where("name", "==", this.$auth.currentUser.displayName)
-      .where("dates", "==", "2021-06-21")
+      .where("dates", "==", this.myDate)
       .get()
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
