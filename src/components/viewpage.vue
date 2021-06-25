@@ -11,7 +11,6 @@
               <tr>{{ result.comments }}</tr>
             </table>
             <img src="" alt="image">
-            <PageView />
           </div>
           
         </div>
@@ -27,7 +26,6 @@
               <tr>{{ result.comments }}</tr>
             </table>
             <img src="" alt="image">
-            <PageView />
           </div>
           
         </div>
@@ -43,7 +41,6 @@
               <tr>{{ result.comments }}</tr>
             </table>
             <img src="" alt="image">
-            <PageView />
           </div>
         </div>
         
@@ -54,12 +51,9 @@
 
 <script>
 import firebase from "firebase";
-import PageView from "@/components/PageView.vue"
 
 export default {
-  components: {
-      PageView,
-    },
+
   data() {
     return {
       results: [],
