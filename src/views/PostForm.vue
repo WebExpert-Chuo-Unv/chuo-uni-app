@@ -1,6 +1,9 @@
 <template>
   <div class="app">
     <h1>みんなの作ったご飯を共有しよう！</h1>
+    <!-- <div>
+      <DatePick />
+    </div> -->
     <div class="content">
       <h3>ユーザーネーム（匿名可）</h3>
       <input type="text" placeholder="山田太郎" v-model="name" />
@@ -58,8 +61,12 @@
 </template>
 
 <script>
+// import DatePick from "@/components/DatePick.vue";
 import firebase from "firebase";
 export default {
+  // components: {
+  //   DatePick,
+  // },
   data() {
     return {
       result: [],
