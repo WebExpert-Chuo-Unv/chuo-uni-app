@@ -10,7 +10,7 @@
           作った料理を投稿してみよう！
         </router-link>
         <router-link class="calendarForm" to="/Calendar"
-          ><span>03</span>カレンダーはこちら</router-link
+          ><span>02</span>カレンダーはこちら</router-link
         >
       </div>
       <div class="LogOut"><button @click="signOut">ログアウト</button></div>
@@ -35,12 +35,11 @@ export default {
 </script>
 <style>
 .Form {
-  position: absolute;
-  left: 250px;
-  top: 650px;
-  width: 800px;
-  border: solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: left;
+  border: solid;
   color: rgb(0, 0, 0, 0);
 }
 .LogOut button {
@@ -78,7 +77,7 @@ body {
   text-align: center;
 }
 .SuccessLogIn {
-  color: rgb(3, 3, 3);
+  color: rgb(12, 238, 121);
   font-size: 40px;
   text-align: center;
 }
