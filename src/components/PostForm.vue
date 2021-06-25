@@ -81,7 +81,7 @@ export default {
         .firestore()
         .collection("result")
         .add({
-          name: this.name, //ここを this.$auth.currentUser.displayNameにする
+          name: this.$auth.currentUser.displayName,
           when: this.time,
           dish: this.CookingName,
           comments: this.comments,
