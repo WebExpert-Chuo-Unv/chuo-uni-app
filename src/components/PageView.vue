@@ -12,6 +12,7 @@
         {{ comment.コメント }}
       </p>
     </div>
+    <router-link to="/Calendar">日にち選択に戻る</router-link>
   </div>
 </template>
 
