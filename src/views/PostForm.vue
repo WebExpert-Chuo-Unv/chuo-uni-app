@@ -71,14 +71,13 @@ export default {
     return {
       result: [],
       name: "",
-      date: "",
+      DatePickerFormat: "",
       time: "",
       CookingName: "",
       comments: "",
       uploadedImage: "",
       img_name: "",
       img: "",
-      // date:"",
     };
   },
   methods: {
@@ -88,13 +87,12 @@ export default {
         .collection("result")
         .add({
           name: this.$auth.currentUser.displayName,
-          dates: this.date,
+          dates: this.DatePickerFormat,
           when: this.time,
           dish: this.CookingName,
           comments: this.comments,
           img: this.img_name,
           like: 0,
-          // date: this.DatePickerFormat,
         });
       firebase
         .storage()

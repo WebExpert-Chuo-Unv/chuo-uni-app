@@ -3,12 +3,12 @@
     <h3>Datepicker</h3>
     <form>
       <div class="col-3 mx-auto" style="width: 250px;">
-        <datepicker
+        <dater
           :format="DatePickerFormat"
           :bootstrap-styling="true"
           :language="ja"
           placeholder="日付を選択してください"
-        ></datepicker>
+        ></date>
       </div>
     </form>
   </div>
