@@ -1,9 +1,10 @@
 <template>
   <div class="app">
     <h1>みんなの作ったご飯を共有しよう！</h1>
-    <!-- <div>
-      <DatePick />
-    </div> -->
+    <div>
+      <input type="date" v-model="detapick" />
+      <!-- <DatePick /> -->
+    </div>
     <div class="content">
       <p class="privacy">※個人情報の取り扱いに注意してください！※</p>
 
@@ -69,13 +70,13 @@ export default {
     return {
       result: [],
       name: "",
-      DatePickerFormat: "",
       time: "",
       CookingName: "",
       comments: "",
       uploadedImage: "",
       img_name: "",
       img: "",
+      detapick: new Date(),
     };
   },
   methods: {
@@ -85,13 +86,14 @@ export default {
         .collection("result")
         .add({
           name: this.$auth.currentUser.displayName,
-          dates: this.DatePickerFormat,
+          dates: this.detapick,
           when: this.time,
           dish: this.CookingName,
           comments: this.comments,
           img: this.img_name,
           like: 0,
         });
+
       firebase
         .storage()
         .ref()

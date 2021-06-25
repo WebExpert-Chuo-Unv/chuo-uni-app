@@ -72,6 +72,8 @@ export default {
     } else {
       this.myDate = this.todayDate.month + "-" + this.todayDate.day;
     }
+  },
+  mounted() {
     firebase
       .firestore()
       .collection("comments")
@@ -84,7 +86,8 @@ export default {
           });
         });
       });
-    this.comment.length == 0, this.isComment == false;
+    this.comments.length == 0, this.isComment == false;
+    console.log(this.myDate);
     firebase
       .firestore()
       .collection("result")
