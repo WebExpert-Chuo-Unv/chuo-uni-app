@@ -78,6 +78,7 @@ export default {
       uploadedImage: "",
       img_name: "",
       img: "",
+      // date:"",
     };
   },
   methods: {
@@ -93,6 +94,7 @@ export default {
           comments: this.comments,
           img: this.img_name,
           like: 0,
+          // date: this.DatePickerFormat,
         });
       firebase
         .storage()
