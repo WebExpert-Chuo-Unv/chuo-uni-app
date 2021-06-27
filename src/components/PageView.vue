@@ -92,15 +92,21 @@ export default {
     },
 
     send() {
-      firebase.firestore().collection("comments").add({
-        コメント: this.feedback, //
-        //toWho:uid
-      })
+      firebase
+        .firestore()
+        .collection("comments")
+        .add({
+          コメント: this.feedback, //
+          //toWho:uid
+        })
       this.comments.length = 0
-      firebase.firestore().collection("comments").add({
-        コメント: this.feedback,
-        toWho: this.$auth.currentUser.displayName,
-      })
+      firebase
+        .firestore()
+        .collection("comments")
+        .add({
+          コメント: this.feedback,
+          toWho: this.$auth.currentUser.displayName,
+        })
     },
   },
   created() {
