@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="title">みんなでシェアご飯！</div>
     <div class="content">
       <div>
         <div>
@@ -52,7 +53,7 @@
   </div>
 </template>
 <script>
-import moment from "moment";
+import moment from "moment"
 export default {
   data() {
     return {
@@ -74,65 +75,65 @@ export default {
         // },
       ],
       dayEvents: null,
-    };
+    }
   },
   methods: {
     getStartDate() {
-      let date = moment(this.currentDate);
-      date.startOf("month");
-      const youbiNum = date.day();
-      return date.subtract(youbiNum, "days");
+      let date = moment(this.currentDate)
+      date.startOf("month")
+      const youbiNum = date.day()
+      return date.subtract(youbiNum, "days")
     },
     getEndDate() {
-      let date = moment(this.currentDate);
-      date.endOf("month");
-      const youbiNum = date.day();
-      return date.add(6 - youbiNum, "days");
+      let date = moment(this.currentDate)
+      date.endOf("month")
+      const youbiNum = date.day()
+      return date.add(6 - youbiNum, "days")
     },
     getCalendar() {
-      let startDate = this.getStartDate();
-      const endDate = this.getEndDate();
-      const weekNumber = Math.ceil(endDate.diff(startDate, "days") / 7);
+      let startDate = this.getStartDate()
+      const endDate = this.getEndDate()
+      const weekNumber = Math.ceil(endDate.diff(startDate, "days") / 7)
 
-      let calendars = [];
-      let calendarDate = this.getStartDate();
+      let calendars = []
+      let calendarDate = this.getStartDate()
 
       for (let week = 0; week < weekNumber; week++) {
-        let weekRow = [];
+        let weekRow = []
         for (let day = 0; day < 7; day++) {
-          let dayEvents = this.getDayEvents(calendarDate);
+          let dayEvents = this.getDayEvents(calendarDate)
           weekRow.push({
             day: calendarDate.get("date"),
             month: calendarDate.format("YYYY-MM"),
             dayEvents,
-          });
-          calendarDate.add(1, "days");
+          })
+          calendarDate.add(1, "days")
         }
-        calendars.push(weekRow);
+        calendars.push(weekRow)
       }
-      return calendars;
+      return calendars
     },
     getDayEvents(date) {
       return this.events.filter((event) => {
-        let startDate = moment(event.start).format("YYYY-MM-DD");
-        let endDate = moment(event.end).format("YYYY-MM-DD");
-        let Date = date.format("YYYY-MM-DD");
-        if (startDate <= Date && endDate >= Date) return true;
-      });
+        let startDate = moment(event.start).format("YYYY-MM-DD")
+        let endDate = moment(event.end).format("YYYY-MM-DD")
+        let Date = date.format("YYYY-MM-DD")
+        if (startDate <= Date && endDate >= Date) return true
+      })
     },
     nextMonth() {
-      this.currentDate = moment(this.currentDate).add(1, "month");
+      this.currentDate = moment(this.currentDate).add(1, "month")
     },
     prevMonth() {
-      this.currentDate = moment(this.currentDate).subtract(1, "month");
+      this.currentDate = moment(this.currentDate).subtract(1, "month")
     },
     alerttest(day) {
-      console.log(day);
+      console.log(day)
     },
   },
   computed: {
     calendars() {
-      return this.getCalendar();
+      return this.getCalendar()
     },
   },
   // mounted() {
@@ -144,7 +145,7 @@ export default {
   //     color: "green",
   //   });
   // },
-};
+}
 </script>
 <style>
 .content {
@@ -186,5 +187,13 @@ export default {
 }
 .back {
   float: right;
+}
+.title {
+  padding: 1rem 2rem;
+  color: #fff;
+  background: #094;
+  -webkit-box-shadow: 5px 5px 0 #007032;
+  box-shadow: 5px 5px 0 #007032;
+  text-align: center;
 }
 </style>

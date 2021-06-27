@@ -1,5 +1,6 @@
 <template>
   <div class="app">
+    <div class="title">みんなでシェアご飯！</div>
     <div>今日は {{ myDate }}</div>
     <div class="breakfirst">
       <h3>朝食</h3>
@@ -177,5 +178,13 @@ body {
   border: 1px solid #9370db; /*線*/
   color: #000000; /*文字色*/
   border-radius: 10px; /*角の丸み*/
+}
+.title {
+  padding: 1rem 2rem;
+  color: #fff;
+  background: #094;
+  -webkit-box-shadow: 5px 5px 0 #007032;
+  box-shadow: 5px 5px 0 #007032;
+  text-align: center;
 }
 </style>

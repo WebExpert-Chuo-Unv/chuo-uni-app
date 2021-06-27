@@ -81,15 +81,18 @@ export default {
   },
   methods: {
     AfterButton() {
-      firebase.firestore().collection("result").add({
-        name: this.$auth.currentUser.displayName,
-        dates: this.detapick,
-        when: this.time,
-        dish: this.CookingName,
-        comments: this.comments,
-        img: this.imageFileURL,
-        like: 0,
-      })
+      firebase
+        .firestore()
+        .collection("result")
+        .add({
+          name: this.$auth.currentUser.displayName,
+          dates: this.detapick,
+          when: this.time,
+          dish: this.CookingName,
+          comments: this.comments,
+          img: this.imageFileURL,
+          like: 0,
+        })
       this.name = ""
       this.time = ""
       this.CookingName = ""
@@ -103,7 +106,10 @@ export default {
       this.createImage(files[0])
       this.img = files[0]
       const fileName = files[0].name
-      const fileRef = firebase.storage().ref().child(fileName)
+      const fileRef = firebase
+        .storage()
+        .ref()
+        .child(fileName)
       fileRef.put(this.img).then(() => {
         fileRef.getDownloadURL().then((url) => {
           this.imageFileURL = url
@@ -121,7 +127,7 @@ export default {
       this.uploadedImage = false
     },
   },
-  mounted: function () {
+  mounted: function() {
     console.log("image")
   },
   created() {
