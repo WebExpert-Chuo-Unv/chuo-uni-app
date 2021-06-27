@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <div class="title">みんなでシェアご飯！</div>
-    <div>今日は {{ myDate }}</div>
+    <div>{{ myDate }}</div>
     <div class="breakfirst">
       <h3>朝食</h3>
       <div v-for="result in results" :key="result.id">
@@ -10,11 +10,17 @@
             <div id="namae">ユーザーネーム：{{ result.name }}</div>
             <div id="gohan">料理名：{{ result.dish }}</div>
             <div id="komento">自由記入：{{ result.comments }}</div>
-            <img :src="result.img" alt="" />
+            <div class="font"><img :src="result.img" alt="" /></div>
           </div>
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
-          <img :src="result.img" alt="" />
+          <div class="feedback">
+            <p v-for="comment in comments" :key="comment">
+              {{ comment.コメント }}
+              <input type="text" placeholder="コメント" v-model="feedback" />
+              <button v-on:click="send">送信</button>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -30,6 +36,13 @@
           </div>
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
+          <div class="feedback">
+            <p v-for="comment in comments" :key="comment">
+              {{ comment.コメント }}
+              <input type="text" placeholder="コメント" v-model="feedback" />
+              <button v-on:click="send">送信</button>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -45,16 +58,17 @@
           </div>
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
+          <div class="feedback">
+            <p v-for="comment in comments" :key="comment">
+              {{ comment.コメント }}
+              <input type="text" placeholder="コメント" v-model="feedback" />
+              <button v-on:click="send">送信</button>
+            </p>
+          </div>
         </div>
       </div>
     </div>
-    <input type="text" placeholder="コメント" v-model="feedback" />
-    <button v-on:click="send">送信</button>
-    <div class="feedback">
-      <p v-for="comment in comments" :key="comment">
-        {{ comment.コメント }}
-      </p>
-    </div>
+
     <router-link to="/Calendar">日にち選択に戻る</router-link>
   </div>
 </template>
@@ -70,7 +84,6 @@ export default {
       count: 0,
       results: [],
       myDate: "",
-      detapick: new Date(),
     }
   },
   props: ["todayDate"],
@@ -99,7 +112,7 @@ export default {
         .collection("comments")
         .add({
           コメント: this.feedback,
-          day: this.detapick,
+          day: this.myDate,
           //toWho:uid
         })
       this.comments.length = 0
@@ -109,7 +122,7 @@ export default {
         .add({
           コメント: this.feedback,
           toWho: this.$auth.currentUser.displayName,
-          day: this.detapick,
+          day: this.myDate,
         })
     },
   },
@@ -125,6 +138,7 @@ export default {
       .firestore()
       .collection("comments")
       .where("toWho", "==", this.$auth.currentUser.displayName)
+      .where("day", "==", this.myDate)
       .onSnapshot((snapshot) => {
         snapshot.docs.forEach((doc) => {
           this.comments.push({
@@ -189,5 +203,8 @@ body {
   -webkit-box-shadow: 5px 5px 0 #007032;
   box-shadow: 5px 5px 0 #007032;
   text-align: center;
+}
+.font {
+  font-size: 0em;
 }
 </style>
