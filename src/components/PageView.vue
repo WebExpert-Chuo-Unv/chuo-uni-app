@@ -14,11 +14,13 @@
           </div>
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
+          <div>
+            <input type="text" placeholder="コメント" v-model="feedback1" />
+            <button v-on:click="send1">送信</button>
+          </div>
           <div class="feedback">
-            <p v-for="comment in comments" :key="comment">
-              {{ comment.コメント }}
-              <input type="text" placeholder="コメント" v-model="feedback" />
-              <button v-on:click="send">送信</button>
+            <p v-for="comment1 in comment1s" :key="comment1">
+              {{ comment1.コメント }}
             </p>
           </div>
         </div>
@@ -37,10 +39,10 @@
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
           <div class="feedback">
-            <p v-for="comment in comments" :key="comment">
-              {{ comment.コメント }}
-              <input type="text" placeholder="コメント" v-model="feedback" />
-              <button v-on:click="send">送信</button>
+            <p v-for="comment2 in comment2s" :key="comment2">
+              {{ comment2.コメント }}
+              <input type="text" placeholder="コメント" v-model="feedback2" />
+              <button v-on:click="send2">送信</button>
             </p>
           </div>
         </div>
@@ -59,10 +61,10 @@
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
           <div class="feedback">
-            <p v-for="comment in comments" :key="comment">
-              {{ comment.コメント }}
-              <input type="text" placeholder="コメント" v-model="feedback" />
-              <button v-on:click="send">送信</button>
+            <p v-for="comment3 in comment3s" :key="comment3">
+              {{ comment3.コメント }}
+              <input type="text" placeholder="コメント" v-model="feedback3" />
+              <button v-on:click="send3">送信</button>
             </p>
           </div>
         </div>
@@ -79,7 +81,9 @@ export default {
   data() {
     return {
       isComment: true,
-      comments: [],
+      comment1s: [],
+      comment2s: [],
+      comment3s: [],
       feedback: "",
       count: 0,
       results: [],
@@ -106,21 +110,33 @@ export default {
       this.results.length = 0
     },
 
-    send() {
+    send1() {
       firebase
         .firestore()
-        .collection("comments")
+        .collection("comment1s")
         .add({
-          コメント: this.feedback,
+          コメント: this.feedback1,
+          toWho: this.$auth.currentUser.displayName,
           day: this.myDate,
-          //toWho:uid
         })
-      this.comments.length = 0
+    },
+
+    send2() {
       firebase
         .firestore()
-        .collection("comments")
+        .collection("comment2s")
         .add({
-          コメント: this.feedback,
+          コメント: this.feedback2,
+          toWho: this.$auth.currentUser.displayName,
+          day: this.myDate,
+        })
+    },
+    send3() {
+      firebase
+        .firestore()
+        .collection("comment3s")
+        .add({
+          コメント: this.feedback3,
           toWho: this.$auth.currentUser.displayName,
           day: this.myDate,
         })
@@ -136,18 +152,47 @@ export default {
   mounted() {
     firebase
       .firestore()
-      .collection("comments")
+      .collection("comment1s")
       .where("toWho", "==", this.$auth.currentUser.displayName)
       .where("day", "==", this.myDate)
       .onSnapshot((snapshot) => {
         snapshot.docs.forEach((doc) => {
-          this.comments.push({
+          this.comment1s.push({
             id: doc.id,
             ...doc.data(),
           })
         })
       })
-    this.comments.length == 0, this.isComment == false
+    firebase
+      .firestore()
+      .collection("comment2s")
+      .where("toWho", "==", this.$auth.currentUser.displayName)
+      .where("day", "==", this.myDate)
+      .onSnapshot((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          this.comment2s.push({
+            id: doc.id,
+            ...doc.data(),
+          })
+        })
+      })
+    firebase
+      .firestore()
+      .collection("comment3s")
+      .where("toWho", "==", this.$auth.currentUser.displayName)
+      .where("day", "==", this.myDate)
+      .onSnapshot((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          this.comment3s.push({
+            id: doc.id,
+            ...doc.data(),
+          })
+        })
+      })
+    this.comment1s.length == 0, this.isComment == false
+    this.comment2s.length == 0, this.isComment == false
+    this.comment3s.length == 0, this.isComment == false
+
     console.log(this.myDate)
     firebase
       .firestore()
