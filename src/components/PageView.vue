@@ -10,7 +10,7 @@
             <div id="namae">ユーザーネーム：{{ result.name }}</div>
             <div id="gohan">料理名：{{ result.dish }}</div>
             <div id="komento">自由記入：{{ result.comments }}</div>
-            <div class="font"><img :src="result.img" alt="" /></div>
+            <div class="asafont"><img :src="result.img" alt="" /></div>
           </div>
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
@@ -249,7 +249,7 @@ body {
   box-shadow: 5px 5px 0 #007032;
   text-align: center;
 }
-.font {
-  font-size: 0em;
+.asafont {
+  font-size: 2px;
 }
 </style>
