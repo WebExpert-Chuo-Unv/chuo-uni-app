@@ -9,9 +9,11 @@
             <div id="namae">ユーザーネーム：{{ result.name }}</div>
             <div id="gohan">料理名：{{ result.dish }}</div>
             <div id="komento">自由記入：{{ result.comments }}</div>
+            <img :src="result.img" alt="" />
           </div>
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
+          <img :src="result.img" alt="" />
         </div>
       </div>
     </div>
@@ -57,7 +59,7 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import firebase from "firebase"
 export default {
   data() {
     return {
@@ -67,15 +69,15 @@ export default {
       count: 0,
       results: [],
       myDate: "",
-    };
+    }
   },
   props: ["todayDate"],
   methods: {
     good(number, id) {
       if (this.count <= 0) {
-        this.count = 1;
+        this.count = 1
       } else {
-        this.count = -1;
+        this.count = -1
       }
       /// update
       /// 引数(いいねの数、いいねの対象のid)
@@ -83,35 +85,29 @@ export default {
         .firestore()
         .collection("result")
         .doc(id)
-        .update({ like: number + this.count });
+        .update({ like: number + this.count })
 
       //いいね:いいねのかず + this.count
-      this.results.length = 0;
+      this.results.length = 0
     },
 
     send() {
-      firebase
-        .firestore()
-        .collection("comments")
-        .add({
-          コメント: this.feedback, //
-          //toWho:uid
-        });
-      this.comments.length = 0;
-      firebase
-        .firestore()
-        .collection("comments")
-        .add({
-          コメント: this.feedback,
-          toWho: this.$auth.currentUser.displayName,
-        });
+      firebase.firestore().collection("comments").add({
+        コメント: this.feedback, //
+        //toWho:uid
+      })
+      this.comments.length = 0
+      firebase.firestore().collection("comments").add({
+        コメント: this.feedback,
+        toWho: this.$auth.currentUser.displayName,
+      })
     },
   },
   created() {
     if (this.todayDate.day < 10) {
-      this.myDate = this.todayDate.month + "-0" + this.todayDate.day;
+      this.myDate = this.todayDate.month + "-0" + this.todayDate.day
     } else {
-      this.myDate = this.todayDate.month + "-" + this.todayDate.day;
+      this.myDate = this.todayDate.month + "-" + this.todayDate.day
     }
   },
   mounted() {
@@ -124,11 +120,11 @@ export default {
           this.comments.push({
             id: doc.id,
             ...doc.data(),
-          });
-        });
-      });
-    this.comments.length == 0, this.isComment == false;
-    console.log(this.myDate);
+          })
+        })
+      })
+    this.comments.length == 0, this.isComment == false
+    console.log(this.myDate)
     firebase
       .firestore()
       .collection("result")
@@ -139,11 +135,11 @@ export default {
           this.results.push({
             id: doc.id,
             ...doc.data(),
-          });
-        });
-      });
+          })
+        })
+      })
   },
-};
+}
 </script>
 
 <style>
