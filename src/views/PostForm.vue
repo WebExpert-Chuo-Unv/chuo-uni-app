@@ -25,7 +25,7 @@
           alt=""
         />
         <div v-show="uploadedImage" class="preview-item-btn" @click="remove">
-          <p class="preview-item-name">{{ img_name }}</p>
+          <p class="preview-item-name">{{ imageFileURL }}</p>
         </div>
       </div>
 
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import firebase from "firebase"
 // import DatePick from "@/components/DatePick.vue";
 export default {
   // components: {
@@ -74,51 +74,55 @@ export default {
       CookingName: "",
       comments: "",
       uploadedImage: "",
-      img_name: "",
+      imageFileURL: "",
       img: "",
       detapick: new Date(),
-    };
+    }
   },
   methods: {
     AfterButton() {
-      firebase
-        .firestore()
-        .collection("result")
-        .add({
-          name: this.$auth.currentUser.displayName,
-          dates: this.detapick,
-          when: this.time,
-          dish: this.CookingName,
-          comments: this.comments,
-          img: this.img_name,
-          like: 0,
-        });
-
-      firebase
-        .storage()
-        .ref()
-        .child(this.img.name)
-        .put(this.img);
+      firebase.firestore().collection("result").add({
+        name: this.$auth.currentUser.displayName,
+        dates: this.detapick,
+        when: this.time,
+        dish: this.CookingName,
+        comments: this.comments,
+        img: this.imageFileURL,
+        like: 0,
+      })
+      this.name = ""
+      this.time = ""
+      this.CookingName = ""
+      this.comments = ""
+      this.uploadedImage = ""
+      this.imageFileURL = ""
+      this.img = ""
     },
     onFileChange(e) {
-      const files = e.target.files || e.dataTransfer.files;
-      this.createImage(files[0]);
-      this.img_name = files[0].name;
-      this.img = files[0];
+      const files = e.target.files || e.dataTransfer.files
+      this.createImage(files[0])
+      this.img = files[0]
+      const fileName = files[0].name
+      const fileRef = firebase.storage().ref().child(fileName)
+      fileRef.put(this.img).then(() => {
+        fileRef.getDownloadURL().then((url) => {
+          this.imageFileURL = url
+        })
+      })
     },
     createImage(file) {
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.onload = (e) => {
-        this.uploadedImage = e.target.result;
-      };
-      reader.readAsDataURL(file);
+        this.uploadedImage = e.target.result
+      }
+      reader.readAsDataURL(file)
     },
     remove() {
-      this.uploadedImage = false;
+      this.uploadedImage = false
     },
   },
-  mounted: function() {
-    console.log("image");
+  mounted: function () {
+    console.log("image")
   },
   created() {
     firebase
@@ -130,11 +134,11 @@ export default {
           this.result.push({
             id: doc.id,
             ...doc.data(),
-          });
-        });
-      });
+          })
+        })
+      })
   },
-};
+}
 </script>
 <style>
 body {

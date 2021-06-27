@@ -10,7 +10,6 @@
             <div id="gohan">料理名：{{ result.dish }}</div>
             <div id="komento">自由記入：{{ result.comments }}</div>
           </div>
-
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
         </div>
