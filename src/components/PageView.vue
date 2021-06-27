@@ -70,6 +70,7 @@ export default {
       count: 0,
       results: [],
       myDate: "",
+      detapick: new Date(),
     }
   },
   props: ["todayDate"],
@@ -97,7 +98,8 @@ export default {
         .firestore()
         .collection("comments")
         .add({
-          コメント: this.feedback, //
+          コメント: this.feedback,
+          day: this.detapick,
           //toWho:uid
         })
       this.comments.length = 0
@@ -107,6 +109,7 @@ export default {
         .add({
           コメント: this.feedback,
           toWho: this.$auth.currentUser.displayName,
+          day: this.detapick,
         })
     },
   },

@@ -147,11 +147,6 @@ export default {
 }
 </script>
 <style>
-body {
-  background-image: url("~@/assets/PostForm2.jpg");
-  background-size: 100%;
-  backdrop-filter: blur(5px);
-}
 .app {
   font-weight: bold;
   margin: 10% auto;
