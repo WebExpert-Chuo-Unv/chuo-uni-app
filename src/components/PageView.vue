@@ -109,15 +109,13 @@ export default {
       } else {
         this.count = -1
       }
-      /// update
-      /// 引数(いいねの数、いいねの対象のid)
+
       firebase
         .firestore()
         .collection("result")
         .doc(id)
         .update({ like1: number + this.count })
 
-      //いいね:いいねのかず + this.count
       this.results.length = 0
     },
     good2(number, id) {
@@ -126,15 +124,13 @@ export default {
       } else {
         this.count = -1
       }
-      /// update
-      /// 引数(いいねの数、いいねの対象のid)
+
       firebase
         .firestore()
         .collection("result")
         .doc(id)
         .update({ like2: number + this.count })
 
-      //いいね:いいねのかず + this.count
       this.results.length = 0
     },
     good3(number, id) {
@@ -143,15 +139,13 @@ export default {
       } else {
         this.count = -1
       }
-      /// update
-      /// 引数(いいねの数、いいねの対象のid)
+
       firebase
         .firestore()
         .collection("result")
         .doc(id)
         .update({ like3: number + this.count })
 
-      //いいね:いいねのかず + this.count
       this.results.length = 0
     },
     send1() {
