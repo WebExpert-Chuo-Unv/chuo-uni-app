@@ -293,7 +293,4 @@ body {
   box-shadow: 5px 5px 0 #007032;
   text-align: center;
 }
-.asafont {
-  font-size: 2px;
-}
 </style>
