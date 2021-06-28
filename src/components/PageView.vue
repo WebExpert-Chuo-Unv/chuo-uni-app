@@ -6,7 +6,7 @@
       <h3>朝食</h3>
       <div v-for="result in results" :key="result.id">
         <div class="cooking" v-if="result.when == '朝ごはん'">
-          <div class="asa">
+          <div class="cook">
             <div id="namae">ユーザーネーム：{{ result.name }}</div>
             <div id="gohan">料理名：{{ result.dish }}</div>
             <img :src="result.img" alt="" class="photo" />
@@ -15,7 +15,6 @@
               <button @click="good1(result.like1, result.id)">👍</button>
               {{ result.like1 }}
             </h1>
-
             <input type="text" placeholder="コメント" v-model="feedback1" />
             <button v-on:click="send1">送信</button>
           </div>
@@ -32,17 +31,15 @@
       <h3>昼食</h3>
       <div v-for="result in results" :key="result.id">
         <div class="cooking" v-if="result.when == '昼ごはん'">
-          <div>
+          <div class="cook">
             <div id="namae">ユーザーネーム：{{ result.name }}</div>
             <div id="gohan">料理名：{{ result.dish }}</div>
-
             <img :src="result.img" alt="" class="photo" />
             <div id="komento">自由記入：{{ result.comments }}</div>
             <h1>
               <button @click="good2(result.like2, result.id)">👍</button>
               {{ result.like2 }}
             </h1>
-
             <input type="text" placeholder="コメント" v-model="feedback2" />
             <button v-on:click="send2">送信</button>
           </div>
@@ -59,17 +56,15 @@
       <h3>夕食</h3>
       <div v-for="result in results" :key="result.id">
         <div class="cooking" v-if="result.when == '夜ごはん'">
-          <div class="yoru">
+          <div class="cook">
             <div id="namae">ユーザーネーム:{{ result.name }}</div>
             <div id="gohan">料理名：{{ result.dish }}</div>
-
             <img :src="result.img" alt="" class="photo" />
             <div id="komento">自由記入：{{ result.comments }}</div>
             <h1>
               <button @click="good3(result.like3, result.id)">👍</button
               >{{ result.like3 }}
             </h1>
-
             <input type="text" placeholder="コメント" v-model="feedback3" />
             <button v-on:click="send3">送信</button>
           </div>
@@ -270,7 +265,7 @@ body {
   color: #000000; /*文字色*/
   border-radius: 10px; /*角の丸み*/
 }
-.yoru {
+.cook {
   height: auto;
   width: 20em;
 

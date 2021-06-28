@@ -63,11 +63,7 @@ export default {
   box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
   color: #fff;
 }
-body {
-  background-image: url("~@/assets/aa.jpeg");
-  background-size: 100%;
-  backdrop-filter: blur(5px);
-}
+
 .title {
   padding: 1rem 2rem;
   color: #fff;
