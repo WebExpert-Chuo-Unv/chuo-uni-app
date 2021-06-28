@@ -2,13 +2,7 @@
   <div>
     <div class="title">みんなでシェアご飯！</div>
     <div class="content">
-      <div>
-        <div>
-          <!-- <router-link to="/viewpage">閲覧ページ</router-link> -->
-        </div>
-        <router-view />
-      </div>
-      <h2>カレンダー{{ currentDate }}</h2>
+      <h2>{{ displayDate }}</h2>
       <div>
         <div>
           <!-- <router-link to="/viewpage">閲覧ページ</router-link> -->
@@ -134,6 +128,9 @@ export default {
   computed: {
     calendars() {
       return this.getCalendar()
+    },
+    displayDate() {
+      return this.currentDate.format(`YYYY[年]M[月]`);
     },
   },
   // mounted() {
