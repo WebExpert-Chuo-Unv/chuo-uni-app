@@ -9,11 +9,11 @@
             <div id="namae">ユーザーネーム：{{ result.name }}</div>
             <div id="gohan">料理名：{{ result.dish }}</div>
             <div id="komento">自由記入：{{ result.comments }}</div>
-            <img :src="result.img" alt="" />
+            <div class="photo"><img :src="result.img" alt="" /></div>
           </div>
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
-          <img :src="result.img" alt="" />
+          <img :src="result.img" alt="" class="photo" />
         </div>
       </div>
     </div>
@@ -26,6 +26,7 @@
             <div id="namae">ユーザーネーム：{{ result.name }}</div>
             <div id="gohan">料理名：{{ result.dish }}</div>
             <div id="komento">自由記入：{{ result.comments }}</div>
+            <img :src="result.img" alt="" class="photo"/>
           </div>
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
@@ -41,6 +42,7 @@
             <div id="namae">ユーザーネーム:{{ result.name }}</div>
             <div id="gohan">料理名：{{ result.dish }}</div>
             <div id="komento">自由記入：{{ result.comments }}</div>
+            <img :src="result.img" alt=""  class="photo"/>
           </div>
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
@@ -145,6 +147,10 @@ export default {
 <style>
 body {
   text-align: center;
+}
+.photo{
+  width: 100%;
+  border-radius: 5%;
 }
 .feedback {
   height: 80px;
