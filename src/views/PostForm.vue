@@ -6,8 +6,6 @@
       <!-- <DatePick /> -->
     </div>
     <div class="content">
-      <p class="privacy">※個人情報の取り扱いに注意してください！※</p>
-
       <h3>料理名</h3>
       <input type="text" placeholder="ハヤシライス" v-model="CookingName" />
       <p>
@@ -155,7 +153,6 @@ export default {
   text-align: center;
   width: 70%;
   height: 80vh;
-  background-image: url("~@/assets/page.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }

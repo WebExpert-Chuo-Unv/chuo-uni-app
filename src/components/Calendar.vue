@@ -175,6 +175,8 @@ export default {
 }
 .calendar-day {
   text-align: center;
+  font-weight: bold;
+  color: rgb(10, 10, 182);
 }
 .calendar-event {
   color: white;
