@@ -9,7 +9,6 @@
           <div class="asa">
             <div id="namae">ユーザーネーム：{{ result.name }}</div>
             <div id="gohan">料理名：{{ result.dish }}</div>
-
             <img :src="result.img" alt="" class="photo" />
             <div id="komento">自由記入：{{ result.comments }}</div>
             <h1>
