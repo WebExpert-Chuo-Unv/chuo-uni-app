@@ -91,7 +91,9 @@ export default {
           dish: this.CookingName,
           comments: this.comments,
           img: this.imageFileURL,
-          like: 0,
+          like1: 0,
+          like2: 0,
+          like3: 0,
         })
       this.name = ""
       this.time = ""

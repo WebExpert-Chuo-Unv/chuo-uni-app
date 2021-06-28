@@ -12,8 +12,11 @@
             <div id="komento">自由記入：{{ result.comments }}</div>
             <div class="asafont"><img :src="result.img" alt="" /></div>
           </div>
-          <h1>{{ result.like }}</h1>
-          <button @click="good(result.like, result.id)">👍</button>
+          <h1>
+            <button @click="good1(result.like1, result.id)">👍</button>
+            {{ result.like1 }}
+          </h1>
+
           <div>
             <input type="text" placeholder="コメント" v-model="feedback1" />
             <button v-on:click="send1">送信</button>
@@ -36,8 +39,10 @@
             <div id="gohan">料理名：{{ result.dish }}</div>
             <div id="komento">自由記入：{{ result.comments }}</div>
           </div>
-          <h1>{{ result.like }}</h1>
-          <button @click="good(result.like, result.id)">👍</button>
+          <h1>
+            <button @click="good2(result.like2, result.id)">👍</button>
+            {{ result.like2 }}
+          </h1>
           <div>
             <input type="text" placeholder="コメント" v-model="feedback2" />
             <button v-on:click="send2">送信</button>
@@ -60,8 +65,10 @@
             <div id="gohan">料理名：{{ result.dish }}</div>
             <div id="komento">自由記入：{{ result.comments }}</div>
           </div>
-          <h1>{{ result.like }}</h1>
-          <button @click="good(result.like, result.id)">👍</button>
+          <h1>
+            <button @click="good3(result.like3, result.id)">👍</button
+            >{{ result.like3 }}
+          </h1>
           <div>
             <input type="text" placeholder="コメント" v-model="feedback3" />
             <button v-on:click="send3">送信</button>
@@ -96,7 +103,7 @@ export default {
   },
   props: ["todayDate"],
   methods: {
-    good(number, id) {
+    good1(number, id) {
       if (this.count <= 0) {
         this.count = 1
       } else {
@@ -108,12 +115,45 @@ export default {
         .firestore()
         .collection("result")
         .doc(id)
-        .update({ like: number + this.count })
+        .update({ like1: number + this.count })
 
       //いいね:いいねのかず + this.count
       this.results.length = 0
     },
+    good2(number, id) {
+      if (this.count <= 0) {
+        this.count = 1
+      } else {
+        this.count = -1
+      }
+      /// update
+      /// 引数(いいねの数、いいねの対象のid)
+      firebase
+        .firestore()
+        .collection("result")
+        .doc(id)
+        .update({ like2: number + this.count })
 
+      //いいね:いいねのかず + this.count
+      this.results.length = 0
+    },
+    good3(number, id) {
+      if (this.count <= 0) {
+        this.count = 1
+      } else {
+        this.count = -1
+      }
+      /// update
+      /// 引数(いいねの数、いいねの対象のid)
+      firebase
+        .firestore()
+        .collection("result")
+        .doc(id)
+        .update({ like3: number + this.count })
+
+      //いいね:いいねのかず + this.count
+      this.results.length = 0
+    },
     send1() {
       firebase
         .firestore()
