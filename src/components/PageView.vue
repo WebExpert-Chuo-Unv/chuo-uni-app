@@ -10,7 +10,7 @@
             <div id="namae">ユーザーネーム：{{ result.name }}</div>
             <div id="gohan">料理名：{{ result.dish }}</div>
             <div id="komento">自由記入：{{ result.comments }}</div>
-            <div class="asafont"><img :src="result.img" alt="" /></div>
+            <div class="photo"><img :src="result.img" alt="" /></div>
           </div>
           <h1>
             <button @click="good1(result.like1, result.id)">👍</button>
@@ -38,6 +38,7 @@
             <div id="namae">ユーザーネーム：{{ result.name }}</div>
             <div id="gohan">料理名：{{ result.dish }}</div>
             <div id="komento">自由記入：{{ result.comments }}</div>
+            <img :src="result.img" alt="" class="photo" />
           </div>
           <h1>
             <button @click="good2(result.like2, result.id)">👍</button>
@@ -64,6 +65,7 @@
             <div id="namae">ユーザーネーム:{{ result.name }}</div>
             <div id="gohan">料理名：{{ result.dish }}</div>
             <div id="komento">自由記入：{{ result.comments }}</div>
+            <img :src="result.img" alt="" class="photo" />
           </div>
           <h1>
             <button @click="good3(result.like3, result.id)">👍</button
@@ -252,6 +254,10 @@ export default {
 <style>
 body {
   text-align: center;
+}
+.photo {
+  width: 100%;
+  border-radius: 5%;
 }
 .feedback {
   height: 80px;
