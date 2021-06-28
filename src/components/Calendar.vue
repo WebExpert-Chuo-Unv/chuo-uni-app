@@ -130,7 +130,7 @@ export default {
       return this.getCalendar()
     },
     displayDate() {
-      return this.currentDate.format(`YYYY[年]M[月]`);
+      return this.currentDate.format(`YYYY[年]M[月]`)
     },
   },
   // mounted() {
@@ -151,6 +151,7 @@ export default {
 }
 .button-area {
   margin: 0.5em 0;
+  text-align: start;
 }
 .button {
   padding: 4px 8px;
