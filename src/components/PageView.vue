@@ -38,11 +38,13 @@
           </div>
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
+          <div>
+            <input type="text" placeholder="コメント" v-model="feedback2" />
+            <button v-on:click="send2">送信</button>
+          </div>
           <div class="feedback">
             <p v-for="comment2 in comment2s" :key="comment2">
               {{ comment2.コメント }}
-              <input type="text" placeholder="コメント" v-model="feedback2" />
-              <button v-on:click="send2">送信</button>
             </p>
           </div>
         </div>
@@ -60,11 +62,13 @@
           </div>
           <h1>{{ result.like }}</h1>
           <button @click="good(result.like, result.id)">👍</button>
+          <div>
+            <input type="text" placeholder="コメント" v-model="feedback3" />
+            <button v-on:click="send3">送信</button>
+          </div>
           <div class="feedback">
             <p v-for="comment3 in comment3s" :key="comment3">
               {{ comment3.コメント }}
-              <input type="text" placeholder="コメント" v-model="feedback3" />
-              <button v-on:click="send3">送信</button>
             </p>
           </div>
         </div>
