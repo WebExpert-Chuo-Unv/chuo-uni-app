@@ -70,7 +70,7 @@
           </div>
           <div class="feedback">
             <p v-for="comment3 in comment3s" :key="comment3">
-              {{ comment3.コメント }}
+              {{ comment3.toWho == result.name ? comment3.コメント : `` }}
             </p>
           </div>
         </div>
@@ -189,12 +189,14 @@ export default {
       // .where("toWho", "==", this.$auth.currentUser.displayName)
       .where("day", "==", this.myDate)
       .onSnapshot((snapshot) => {
+        let temp = []
         snapshot.docs.forEach((doc) => {
-          this.comment1s.push({
+          temp.push({
             id: doc.id,
             ...doc.data(),
           })
         })
+        this.comment1s = temp
       })
     firebase
       .firestore()
@@ -202,12 +204,14 @@ export default {
       // .where("toWho", "==", this.$auth.currentUser.displayName)
       .where("day", "==", this.myDate)
       .onSnapshot((snapshot) => {
+        let temp = []
         snapshot.docs.forEach((doc) => {
-          this.comment2s.push({
+          temp.push({
             id: doc.id,
             ...doc.data(),
           })
         })
+        this.comment2s = temp
       })
     firebase
       .firestore()
@@ -215,12 +219,14 @@ export default {
       //.where("toWho", "==", this.$auth.currentUser.displayName)
       .where("day", "==", this.myDate)
       .onSnapshot((snapshot) => {
+        let temp = []
         snapshot.docs.forEach((doc) => {
-          this.comment3s.push({
+          temp.push({
             id: doc.id,
             ...doc.data(),
           })
         })
+        this.comment3s = temp
       })
     this.comment1s.length == 0, this.isComment == false
     this.comment2s.length == 0, this.isComment == false
