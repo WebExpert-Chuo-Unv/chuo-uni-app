@@ -6,15 +6,15 @@
 </template>
 
 <script>
-import LogIn from "@/components/LogIn.vue";
+import LogIn from "@/components/LogIn.vue"
 export default {
   components: {
     LogIn,
   },
   computed: {
     user() {
-      return this.$auth.currentUser.uid;
+      return this.$auth.currentUser.uid
     },
   },
-};
+}
 </script>
