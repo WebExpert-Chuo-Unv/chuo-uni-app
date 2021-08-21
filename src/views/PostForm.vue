@@ -7,6 +7,7 @@
     </div>
     <div class="content">
       <!-- <div>aaaaaaaaaaa</div> -->
+      <!-- dddddddddd -->
       <h3>料理名</h3>
       <input type="text" placeholder="ハヤシライス" v-model="CookingName" />
       <p>
