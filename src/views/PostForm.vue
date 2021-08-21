@@ -6,6 +6,7 @@
       <!-- <DatePick /> -->
     </div>
     <div class="content">
+      <!-- <div>aaaaaaaaaaa</div> -->
       <h3>料理名</h3>
       <input type="text" placeholder="ハヤシライス" v-model="CookingName" />
       <p>
@@ -59,11 +60,8 @@
 
 <script>
 import firebase from "firebase"
-// import DatePick from "@/components/DatePick.vue";
+
 export default {
-  // components: {
-  //   DatePick,
-  // },
   data() {
     return {
       result: [],
